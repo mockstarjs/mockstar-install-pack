@@ -14,6 +14,10 @@ const EVENT = {
     LOCAL_DB_INFO: {
         REQ: 'req-local-db-info',
         RSP: 'rsp-local-db-info'
+    },
+    CURRENT_PROJECT_INFO: {
+        REQ: 'req-current-project-info',
+        RSP: 'rsp-current-project-info'
     }
 };
 

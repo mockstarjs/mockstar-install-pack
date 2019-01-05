@@ -9,10 +9,10 @@ const { EVENT } = require('../../src/business/electron-main-render-common');
  * @param {Object} event 事件对象
  * @param {Object} [opts] 额外的参数，用于处理某些逻辑
  */
-ipcMain.on(EVENT.LOCAL_DB_INFO.REQ, (event, opts) => {
-    const data = require(path.join(__dirname, '../../src/business/mock/database'));
+ipcMain.on(EVENT.CURRENT_PROJECT_INFO.REQ, (event, opts) => {
+    const data = require(path.join(__dirname, '../../src/business/mock/current-project'));
 
-    event.sender.send(EVENT.LOCAL_DB_INFO.RSP, {
+    event.sender.send(EVENT.CURRENT_PROJECT_INFO.RSP, {
         retcode: 0,
         result: data
     }, opts);
