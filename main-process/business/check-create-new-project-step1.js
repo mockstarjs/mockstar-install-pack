@@ -3,7 +3,7 @@ const fs = require('fs');
 const { ipcMain } = require('electron');
 
 const { EVENT } = require('../../src/business/electron-main-render-common');
-const utils = require('../../business/utils');
+
 
 /**
  * 检查创建新项目第一步的参数
@@ -23,35 +23,6 @@ ipcMain.on(EVENT.CHECK_CREATE_NEW_PROJECT_STEP1.REQ, (event, opts = {}) => {
     } else {
         const { rtxName } = data;
 
-        utils.git.getUserBySearch(rtxName)
-            .then((data) => {
-                if (!data || !data.success || !data.data) {
-                    return Promise.reject('获取该用户信息失败: ' + rtxName);
-                }
-
-                let list = JSON.parse(data.data);
-
-                if (!list || !list.length) {
-                    return Promise.reject('不存在该用户: ' + rtxName);
-                }
-
-                let userInfo = list[0];
-
-                if (userInfo.username !== rtxName || userInfo.state !== 'active') {
-                    return Promise.reject('不存在该用户，或该用户已离职：' + rtxName);
-                }
-
-                // 校验OK
-                event.sender.send(EVENT.CHECK_CREATE_NEW_PROJECT_STEP1.RSP, {
-                    retcode: 0
-                }, opts);
-            })
-            .catch((err) => {
-                event.sender.send(EVENT.CHECK_CREATE_NEW_PROJECT_STEP1.RSP, {
-                    retcode: -1,
-                    msg: err
-                }, opts);
-            });
 
     }
 });

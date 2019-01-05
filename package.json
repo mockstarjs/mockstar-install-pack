@@ -2,12 +2,14 @@
   "name": "mockstar-install-pack",
   "version": "0.1.0",
   "description": "install pack for MockStar building by Electron",
-  "main": "index.js",
+  "main": "main.js",
+  "homepage": "./",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "electron-start": "electron .",
-    "electron-start-dev": "electron . --debug"
+    "electron-start-dev": "electron . --debug",
+    "electron-start-dev2": "./node_modules/electron/cli.js -v"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,6 @@
   "bugs": {
     "url": "https://github.com/mockstarjs/mockstar-install-pack/issues"
   },
-  "homepage": "https://github.com/mockstarjs/mockstar-install-pack#readme",
   "dependencies": {
     "ant-design-pro": "^2.1.1",
     "antd": "^3.11.6",
