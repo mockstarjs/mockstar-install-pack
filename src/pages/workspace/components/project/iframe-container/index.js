@@ -15,23 +15,31 @@ class HomeProjectList extends Component {
     }
 
     render() {
-        const { isLoading, projects } = this.props;
+        const { isLoaded, port } = this.props.currentProjectInfo;
+
+        if (!isLoaded) {
+            return null;
+        }
 
         return (
             <div className="page-workspace-project-iframe-container">
-                <Iframe url={'http://127.0.0.1:9527'} />
+                <Iframe
+                    className="iframe"
+                    allow={'true'}
+                    url={`http://127.0.0.1:${port}`}
+                    width="100%"
+                    height="110%"
+                />
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { localDBInfo } = state;
+    const { currentProjectInfo } = state;
 
     return {
-        isLoaded: localDBInfo.isLoaded,
-        isLoading: localDBInfo.isLoading,
-        projects: localDBInfo.projects
+        currentProjectInfo: currentProjectInfo
     };
 }
 

@@ -14,7 +14,7 @@ export default function OnlyTestContainer(props) {
     let { match } = props;
 
     return (
-        <Layout className="page-workspace">
+        <Layout className="page-only-test">
             <Layout.Content>
 
                 <h1>仅仅用于调试而已</h1>
