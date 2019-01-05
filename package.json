@@ -4,7 +4,10 @@
   "description": "install pack for MockStar building by Electron",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "electron-start": "electron .",
+    "electron-start-dev": "electron . --debug"
   },
   "repository": {
     "type": "git",
