@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Card, Divider, Layout } from 'antd';
+import { Card, List } from 'antd';
+
+import { Ellipsis } from 'ant-design-pro';
+
 import './index.less';
-import { DescriptionList } from 'ant-design-pro';
-
-const { Header, Content, Footer } = Layout;
-
-const { Description } = DescriptionList;
 
 class HomeProjectList extends Component {
     constructor(props, context) {
@@ -19,32 +17,38 @@ class HomeProjectList extends Component {
     }
 
     render() {
-        const { isLoaded, isSuccess, data } = this.props;
-        const { projectFolder, startkitConfig } = data;
+        // const { isLoaded, isSuccess, data } = this.props;
+        // const { projectFolder, startkitConfig } = data;
 
-        if (!isSuccess) {
-            return null;
-        }
+        const loading = false;
+        const dataSource = [{
+            id: 1,
+            title: 'title',
+            description: 'description'
+        }];
 
         return (
-            <div className="page-workspace-dashboard">
-                <Card bordered={false}>
-                    <DescriptionList size="large" title="基础信息" style={{ marginBottom: 32 }}>
-                        <Description term="路径">{projectFolder}</Description>
-                        <Description term="仓库名">{startkitConfig.name}</Description>
-                        <Description term="仓库地址">{startkitConfig.gitProjectData.web_url}</Description>
-                        <Description term="中文别名">{startkitConfig.nickName}</Description>
-                        <Description term="描述信息">{startkitConfig.description}</Description>
-                        <Description term="项目Owner">{startkitConfig.rtxName}</Description>
-                    </DescriptionList>
-
-                    <Divider style={{ marginBottom: 32 }} />
-
-                    <DescriptionList size="large" title="资源信息" style={{ marginBottom: 32 }}>
-                        <Description term="离线包ID">{startkitConfig.offlineId} </Description>
-                        <Description term="BadjJS ID">{startkitConfig.badjsId} (http://badjs2.ivweb.io)</Description>
-                    </DescriptionList>
-                </Card>
+            <div className="page-home-project-list">
+                <List
+                    rowKey="id"
+                    loading={loading}
+                    grid={{ gutter: 24, lg: 3, md: 2, sm: 1, xs: 1 }}
+                    dataSource={dataSource}
+                    renderItem={item =>
+                        <List.Item key={item.id}>
+                            <Card hoverable actions={[<a>操作一</a>, <a>操作二</a>]}>
+                                <Card.Meta
+                                    title={<a>{item.title}</a>}
+                                    description={
+                                        <Ellipsis lines={3}>
+                                            {item.description}
+                                        </Ellipsis>
+                                    }
+                                />
+                            </Card>
+                        </List.Item>
+                    }
+                />
             </div>
         );
     }
