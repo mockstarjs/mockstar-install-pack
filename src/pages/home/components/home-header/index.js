@@ -5,7 +5,7 @@ import { PageHeader } from 'ant-design-pro';
 
 import './index.less';
 
-class HomeProjectList extends Component {
+class HomeHeader extends Component {
     constructor(props, context) {
         super(props, context);
     }
@@ -16,7 +16,7 @@ class HomeProjectList extends Component {
 
     render() {
         const content = (
-            <div>
+            <div className="header-content-wrapper">
                 <p>MockStar 专注于数据模拟。</p>
                 <div className="link">
                     <a>
@@ -53,4 +53,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(HomeProjectList);
+export default connect(mapStateToProps)(HomeHeader);
