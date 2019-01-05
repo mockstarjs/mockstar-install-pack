@@ -1,0 +1,23 @@
+{
+  "name": "mockstar-install-pack",
+  "version": "0.1.0",
+  "description": "install pack for MockStar building by Electron",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mockstarjs/mockstar-install-pack.git"
+  },
+  "keywords": [
+    "mockstar",
+    "electron"
+  ],
+  "author": "helinjiang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mockstarjs/mockstar-install-pack/issues"
+  },
+  "homepage": "https://github.com/mockstarjs/mockstar-install-pack#readme"
+}
