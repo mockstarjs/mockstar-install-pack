@@ -11,7 +11,7 @@ const { EVENT } = require('../../src/business/electron-main-render-common');
  */
 ipcMain.on(EVENT.LOCAL_DB_INFO.REQ, (event, opts) => {
     // 获取 projects/generator/startkit.config.js 的信息
-    const data = require(path.join(__dirname, '../../mock/database'));
+    const data = require(path.join(__dirname, '../../src/business/mock/database'));
 
     event.sender.send(EVENT.LOCAL_DB_INFO.RSP, {
         retcode: 0,

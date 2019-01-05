@@ -1,7 +1,7 @@
 const projects = [{
     id: 1,
-    title: 'title',
-    description: 'description'
+    title: '摇一摇红包',
+    description: '摇一摇红包 description'
 }, {
     id: 2,
     title: 'title2',

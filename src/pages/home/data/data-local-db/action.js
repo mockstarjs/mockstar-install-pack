@@ -11,7 +11,8 @@ function fetchLocalDBData() {
             types: [LOCAL_DB_REQUEST, LOCAL_DB_REQUEST_SUCCESS, LOCAL_DB_REQUEST_FAIL],
             reqEvent: EVENT.LOCAL_DB_INFO.REQ,
             rspEvent: EVENT.LOCAL_DB_INFO.RSP,
-            data: {}
+            data: {},
+            _debug: require('../../../../business/mock/database')
         }
     };
 }

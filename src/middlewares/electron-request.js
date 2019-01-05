@@ -10,6 +10,7 @@ export default store => next => action => {
      *  types: action的type值数组，按顺序依次代表: requestType, successType, failureType
      *  data: 请求的参数对象
      *  transferParam: 回传的参数，会随着请求返回而获得
+     *  _debug: 调试用的参数，在非 electron 中返回
      *
      * @type {{url:String, types:String[], type:String, data:Object}}
      */
@@ -21,7 +22,7 @@ export default store => next => action => {
     }
 
     // 二次处理请求的opts中的参数
-    const { reqEvent, rspEvent, transferParam } = opts;
+    const { reqEvent, rspEvent, transferParam, _debug } = opts;
     const [requestType, successType, failureType] = opts.types;
 
     /**
@@ -77,6 +78,20 @@ export default store => next => action => {
     return new Promise((resolve, reject) => {
         // 如果 window.require is undefined 则立即停止
         if (!window.require) {
+            if (_debug) {
+                // 非 elctron 中的调试模式下成功
+                let finalAction = actionWith({
+                    type: successType,
+                    data: _debug,
+                    transferParam
+                });
+
+                // 传递给下一个中间件
+                next(finalAction);
+
+                return resolve(finalAction);
+            }
+
             let finalAction = actionWith({
                 type: failureType,
                 error: {
