@@ -45,6 +45,7 @@
     "babel-plugin-import": "^1.7.0",
     "electron-renderer-react-scripts-target": "^1.1.1",
     "react-app-rewire-less": "^2.1.1",
-    "react-app-rewired": "^1.5.2"
+    "react-app-rewired": "^1.5.2",
+    "redux-logger": "^3.0.6"
   }
 }
