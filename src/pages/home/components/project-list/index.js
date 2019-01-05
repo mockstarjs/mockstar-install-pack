@@ -17,35 +17,15 @@ class HomeProjectList extends Component {
     }
 
     render() {
-        // const { isLoaded, isSuccess, data } = this.props;
-        // const { projectFolder, startkitConfig } = data;
-
-        const loading = false;
-        const dataSource = [{
-            id: 1,
-            title: 'title',
-            description: 'description'
-        },{
-            id: 2,
-            title: 'title2',
-            description: 'description2'
-        },{
-            id: 3,
-            title: 'title3',
-            description: 'description3'
-        },{
-            id: 4,
-            title: 'title4',
-            description: 'description4'
-        }];
+        const { isLoading, projects } = this.props;
 
         return (
             <div className="page-home-project-list">
                 <List
                     rowKey="id"
-                    loading={loading}
+                    loading={isLoading}
                     grid={{ gutter: 24, lg: 3, md: 2, sm: 1, xs: 1 }}
-                    dataSource={dataSource}
+                    dataSource={projects}
                     renderItem={item =>
                         <List.Item key={item.id}>
                             <Card hoverable actions={[<a>操作一</a>, <a>操作二</a>]}>
@@ -67,12 +47,12 @@ class HomeProjectList extends Component {
 }
 
 function mapStateToProps(state) {
-    const { projectInfo } = state;
+    const { localDBInfo } = state;
 
     return {
-        isLoaded: projectInfo.isLoaded,
-        isSuccess: projectInfo.isSuccess,
-        data: projectInfo.data
+        isLoaded: localDBInfo.isLoaded,
+        isLoading: localDBInfo.isLoading,
+        projects: localDBInfo.projects
     };
 }
 

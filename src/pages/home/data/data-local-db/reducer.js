@@ -10,7 +10,11 @@ const initialState = {
     // 要在界面反馈的错误信息，可以是字符串，也可以是字符串数组
     errMsg: '',
 
-    data: {}
+    // 公共信息
+    info: {},
+
+    // 已有项目列表
+    projects: []
 };
 
 function mockerInfo(state = initialState, action) {
@@ -30,7 +34,7 @@ function mockerInfo(state = initialState, action) {
             update = {
                 isLoaded: true,
                 isLoading: false,
-                data: data
+                ...data
             };
             break;
 
