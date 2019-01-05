@@ -102,7 +102,7 @@ export default store => next => action => {
                 // 成功
                 let finalAction = actionWith({
                     type: successType,
-                    data: resData,
+                    data: resData.result,
                     transferParam
                 });
 
