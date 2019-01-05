@@ -26,7 +26,7 @@ class HomeProjectList extends Component {
                 <Iframe
                     className="iframe"
                     allow={'true'}
-                    url={`http://127.0.0.1:${port}`}
+                    url={`http://127.0.0.1:${port}/mockstar-admin/mockers`}
                     width="100%"
                     height="110%"
                 />
