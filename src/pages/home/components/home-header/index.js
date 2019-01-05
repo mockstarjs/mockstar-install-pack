@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Card, List } from 'antd';
-
-import { Ellipsis, PageHeader } from 'ant-design-pro';
+import { PageHeader } from 'ant-design-pro';
 
 import './index.less';
-import ProjectList from '../project-list';
 
 class HomeProjectList extends Component {
     constructor(props, context) {
@@ -41,8 +38,6 @@ class HomeProjectList extends Component {
                     title="欢迎使用 MockStar 工具"
                     content={content}
                 />
-
-                <ProjectList />
             </div>
         );
     }
