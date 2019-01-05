@@ -16,6 +16,10 @@ class HomeProjectList extends Component {
 
     }
 
+    handleGoProjectPage = (item) => {
+        this.props.goProject(item.id);
+    };
+
     render() {
         const { isLoading, projects } = this.props;
 
@@ -28,7 +32,8 @@ class HomeProjectList extends Component {
                     dataSource={projects}
                     renderItem={item =>
                         <List.Item key={item.id}>
-                            <Card hoverable actions={[<a>关闭/启动</a>, <a>编辑</a>]}>
+                            <Card hoverable actions={[<a>关闭/启动</a>,
+                                <a onClick={this.handleGoProjectPage.bind(this, item)}>编辑</a>]}>
                                 <Card.Meta
                                     title={<a>{item.title}</a>}
                                     description={

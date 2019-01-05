@@ -10,15 +10,19 @@ import './index.less';
 
 class PageWorkspaceHome extends Component {
     componentDidMount() {
-
+        console.log('---2--', this.props.match, this.props.history);
     }
+
+    handleGoProject = (projectName) => {
+        this.props.history.push(`${this.props.match.url}/${projectName}`);
+    };
 
     render() {
         return (
             <div className="page-workspace-home">
                 <Header />
 
-                <ProjectList />
+                <ProjectList goProject={this.handleGoProject}/>
             </div>
         );
     }
