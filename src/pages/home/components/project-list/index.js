@@ -28,7 +28,7 @@ class HomeProjectList extends Component {
                     dataSource={projects}
                     renderItem={item =>
                         <List.Item key={item.id}>
-                            <Card hoverable actions={[<a>操作一</a>, <a>操作二</a>]}>
+                            <Card hoverable actions={[<a>关闭/启动</a>, <a>编辑</a>]}>
                                 <Card.Meta
                                     title={<a>{item.title}</a>}
                                     description={
