@@ -4,6 +4,7 @@ import './index.less';
 import { loadCurrentProjectData } from '../../data/data-current-project';
 
 import Header from './header';
+import IframeContainer from './iframe-container';
 
 class PageWorkspaceProject extends Component {
     componentDidMount() {
@@ -17,6 +18,7 @@ class PageWorkspaceProject extends Component {
         return (
             <div className="page-workspace-project">
                 <Header />
+                <IframeContainer/>
             </div>
         );
     }
