@@ -7,23 +7,43 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
+import Step5 from './Step5';
 
-import { goStep1, goStep2, goStep3, saveStep1, saveStep2, saveStep3 } from '../../../../data/data-create-mocker';
+import {
+    goStep1,
+    goStep2,
+    goStep3,
+    loadCreateMocker,
+    saveStep1,
+    saveStep2,
+    saveStep3
+} from '../../../../data/data-create-mocker';
 
 import './index.less';
 
 class CreateByStep extends Component {
     render() {
-        const { createMockerInfo, saveStep1, goStep1, saveStep2, goStep2, saveStep3, goStep3 } = this.props;
+        const {
+            createMockerInfo,
+            saveStep1,
+            goStep1,
+            saveStep2,
+            goStep2,
+            saveStep3,
+            goStep3,
+            loadCreateMocker
+        } = this.props;
+
         const { curStep } = createMockerInfo;
 
         return (
             <Fragment>
 
                 <Steps current={curStep} className="create-by-step">
-                    <Steps.Step title="项目基本信息" />
-                    <Steps.Step title="填写额外信息" />
-                    <Steps.Step title="确认信息" />
+                    <Steps.Step title="选择类型" />
+                    <Steps.Step title="基础信息" />
+                    <Steps.Step title="其他信息" />
+                    <Steps.Step title="确认" />
                     <Steps.Step title="完成" />
                 </Steps>
 
@@ -59,7 +79,16 @@ class CreateByStep extends Component {
                     curStep === 3 ? (
                         <Step4
                             createMockerInfo={createMockerInfo}
+                            onSubmit={loadCreateMocker}
                             goBack={goStep3}
+                        />
+                    ) : null
+                }
+
+                {
+                    curStep === 4 ? (
+                        <Step5
+                            createMockerInfo={createMockerInfo}
                         />
                     ) : null
                 }
@@ -103,6 +132,10 @@ function mapDispatchToProps(dispatch) {
 
         goStep3() {
             return dispatch(goStep3());
+        },
+
+        loadCreateMocker(data) {
+            return dispatch(loadCreateMocker(data));
         }
     };
 }

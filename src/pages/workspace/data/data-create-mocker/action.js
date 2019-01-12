@@ -12,6 +12,9 @@ export const CREATE_NEW_MOCKER_SAVE_STEP3_SUCCESS = 'CREATE_NEW_MOCKER_SAVE_STEP
 export const CREATE_NEW_MOCKER_SAVE_STEP3_FAIL = 'CREATE_NEW_MOCKER_SAVE_STEP3_FAIL';
 export const CREATE_NEW_MOCKER_GO_STEP3 = 'CREATE_NEW_MOCKER_GO_STEP3';
 
+export const CREATE_NEW_MOCKER_SAVE_SUCCESS = 'CREATE_NEW_MOCKER_SAVE_SUCCESS';
+export const CREATE_NEW_MOCKER_SAVE_FAIL = 'CREATE_NEW_MOCKER_SAVE_FAIL';
+
 export function saveStep1(data) {
     return {
         type: CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS,
@@ -63,5 +66,13 @@ export function saveStep3(data) {
 export function goStep3() {
     return {
         type: CREATE_NEW_MOCKER_GO_STEP3
+    };
+}
+
+
+export function loadCreateMocker(data) {
+    return {
+        type: CREATE_NEW_MOCKER_SAVE_SUCCESS,
+        data: data
     };
 }

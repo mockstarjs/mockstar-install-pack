@@ -6,7 +6,8 @@ import {
     CREATE_NEW_MOCKER_GO_STEP3,
     CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS,
     CREATE_NEW_MOCKER_SAVE_STEP2_SUCCESS,
-    CREATE_NEW_MOCKER_SAVE_STEP3_SUCCESS
+    CREATE_NEW_MOCKER_SAVE_STEP3_SUCCESS,
+    CREATE_NEW_MOCKER_SAVE_SUCCESS
 } from './action';
 
 const initialState = {
@@ -125,6 +126,12 @@ export default function createMockerInfo(state = initialState, action) {
         case CREATE_NEW_MOCKER_GO_STEP3:
             update = {
                 curStep: 2
+            };
+            break;
+
+        case CREATE_NEW_MOCKER_SAVE_SUCCESS:
+            update = {
+                curStep: 4
             };
             break;
 
