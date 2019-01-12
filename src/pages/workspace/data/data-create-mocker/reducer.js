@@ -38,7 +38,7 @@ const initialState = {
         plugin: 'xhr',
 
         // 管理后台列表中排序的权重，值越大则越排在前面
-        priority: 0,
+        priority: 1,
 
         // 管理后台用到的标签，用于过滤，字符串数组
         tags: []
@@ -47,7 +47,7 @@ const initialState = {
     // 输入缓存信息
     inputInfo: {
         // 请求地址
-        requestURL: '',
+        requestURL: 'https://now.qq.com/cgi-bin/getName',
 
         // 额外路由匹配参数，格式为 a=1&b=3
         routeExtraStr: '',
@@ -93,7 +93,7 @@ export default function createMockerInfo(state = initialState, action) {
                     requestURL: data.requestURL
                 }),
                 errMsg: '',
-                curStep: 1
+                curStep: 2
             };
             break;
 
