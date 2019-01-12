@@ -23,7 +23,7 @@ class CreateStep1 extends Component {
     };
 
     render() {
-        const { form, createMockerInfo } = this.props;
+        const { form, createMockerInfo, goBack } = this.props;
         const { getFieldDecorator } = form;
 
         return (
@@ -81,6 +81,10 @@ class CreateStep1 extends Component {
                         }}
                         label=""
                     >
+                        <Button onClick={goBack}>
+                            上一步
+                        </Button>
+
                         <Button type="primary" onClick={this.handleValidateForm}>
                             下一步
                         </Button>

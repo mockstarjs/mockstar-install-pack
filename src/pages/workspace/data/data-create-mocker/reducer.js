@@ -1,4 +1,4 @@
-import { CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS } from './action';
+import { CREATE_NEW_MOCKER_GO_STEP1, CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS } from './action';
 import _ from 'lodash';
 
 const initialState = {
@@ -6,7 +6,7 @@ const initialState = {
     parentPath: '/Users/helinjiang/tmp-project-master',
 
     // 当前第几步
-    curStep: 0,
+    curStep: 1,
 
     // mocker config 信息
     mockerConfig: {
@@ -20,7 +20,7 @@ const initialState = {
         routeExtra: '',
 
         // 简要描述
-        description: '',
+        description: '我是一句话描述',
 
         // 是否禁用
         disable: false,
@@ -60,7 +60,6 @@ export default function createMockerInfo(state = initialState, action) {
 
     switch (type) {
         case CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS:
-
             update = {
                 mockerConfig: _.merge({}, state.mockerConfig, {
                     plugin: data.plugin,
@@ -69,8 +68,14 @@ export default function createMockerInfo(state = initialState, action) {
                 errMsg: '',
                 curStep: 1
             };
-
             break;
+
+        case CREATE_NEW_MOCKER_GO_STEP1:
+            update = {
+                curStep: 0
+            };
+            break;
+
         default:
             break;
     }
