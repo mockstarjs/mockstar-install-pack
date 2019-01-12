@@ -13,8 +13,13 @@ class PageWorkspaceHome extends Component {
         console.log('---2--', this.props.match, this.props.history);
     }
 
-    handleGoProject = (projectName) => {
-        this.props.history.push(`${this.props.match.url}/${projectName}`);
+    /**
+     * 进入到某个指定的项目详情页中
+     *
+     * @param {Number} projectId 项目ID
+     */
+    handleGoProject = (projectId) => {
+        this.props.history.push(`${this.props.match.url}/${projectId}`);
     };
 
     render() {
