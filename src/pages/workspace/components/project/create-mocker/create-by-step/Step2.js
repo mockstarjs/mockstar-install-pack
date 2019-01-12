@@ -1,97 +1,75 @@
 import React, { Component, Fragment } from 'react';
 
-import { Button, DatePicker, Divider, Form, Input } from 'antd';
-
+import { Button, Divider, Form, Input, Select } from 'antd';
 import { formItemLayout } from './layout-config';
 
-import EditableTagGroup from './EditableTagGroup';
-
-const { MonthPicker, RangePicker } = DatePicker;
 const FormItem = Form.Item;
 
 class CreateStep1 extends Component {
-    constructor(props, context) {
-        super(props, context);
-    }
+    state = {
+        errMsgList: []
+    };
 
     handleValidateForm = () => {
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                if (process.env.NODE_ENV !== 'production') {
+                    console.log('Received values of step1 form: ', values);
+                }
 
-                const rangeValue = values['date-range'];
-
-                console.log([rangeValue[0].format('YYYY-MM-DD'), rangeValue[1].format('YYYY-MM-DD')]);
+                this.props.onSubmit(values);
             }
         });
     };
 
     render() {
-        const { getFieldDecorator } = this.props.form;
+        const { form, createMockerInfo } = this.props;
+        const { getFieldDecorator } = form;
 
         return (
             <Fragment>
-                <Form layout="horizontal" className="stepForm">
-                    <FormItem {...formItemLayout} label="需求英文标记">
-                        {getFieldDecorator('nameEn', {
-                            rules: [
-                                {
-                                    required: true
-                                }
-                            ]
-                        })(<Input placeholder="需求英文名字，用于命名分支" />)}
+                <Form layout="horizontal" className="create-by-step-form">
+                    <FormItem
+                        {...formItemLayout}
+                        label="一句话描述"
+                    >
+                        <span className="ant-form-text">{createMockerInfo.mockerConfig.description}</span>
                     </FormItem>
 
                     <FormItem
                         {...formItemLayout}
-                        label="需求起止日期"
+                        label="接口地址"
+                        help="格式：https://domain.com/cgi-bin/name 或 /cgi/a/name "
                     >
-                        {getFieldDecorator('date-range', {
-                            rules: [{ type: 'array', required: true, message: '请选择日期' }]
+                        {getFieldDecorator('requestURL', {
+                            initialValue: createMockerInfo.inputInfo.requestURL,
+                            rules: [
+                                {
+                                    required: true
+                                }
+                            ]
+                        })(<Input />)}
+                    </FormItem>
+
+                    <FormItem
+                        {...formItemLayout}
+                        label="请求类型"
+                    >
+                        {getFieldDecorator('method', {
+                            initialValue: createMockerInfo.mockerConfig.method,
+                            rules: [
+                                {
+                                    required: true
+                                }
+                            ]
                         })(
-                            <RangePicker />
+                            <Select>
+                                <Select.Option value="get">GET</Select.Option>
+                                <Select.Option value="post">POST</Select.Option>
+                            </Select>
                         )}
                     </FormItem>
 
-                    <FormItem {...formItemLayout} label="产品经理">
-                        {getFieldDecorator('personProduct', {
-                            rules: [
-                                {
-                                    required: true
-                                }
-                            ]
-                        })(<EditableTagGroup />)}
-                    </FormItem>
-
-                    <FormItem {...formItemLayout} label="Web 前端开发">
-                        {getFieldDecorator('personWeb', {
-                            rules: [
-                                {
-                                    required: true
-                                }
-                            ]
-                        })(<EditableTagGroup />)}
-                    </FormItem>
-
-                    <FormItem {...formItemLayout} label="后台开发">
-                        {getFieldDecorator('personCGI', {
-                            rules: [
-                                {
-                                    required: true
-                                }
-                            ]
-                        })(<EditableTagGroup />)}
-                    </FormItem>
-
-                    <FormItem {...formItemLayout} label="测试人员">
-                        {getFieldDecorator('personTester', {
-                            rules: [
-                                {
-                                    required: true
-                                }
-                            ]
-                        })(<EditableTagGroup />)}
-                    </FormItem>
 
                     <FormItem
                         wrapperCol={{
@@ -113,9 +91,8 @@ class CreateStep1 extends Component {
 
                 <div className="desc">
                     <h3>说明</h3>
-                    <h4>转账到支付宝账户</h4>
                     <p>
-                        如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。
+                        这里是额外的说明
                     </p>
                 </div>
             </Fragment>

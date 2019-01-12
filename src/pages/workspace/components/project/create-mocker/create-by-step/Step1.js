@@ -38,11 +38,10 @@ class CreateStep1 extends Component {
 
                     <FormItem
                         {...formItemLayout}
-                        label="CGI地址"
-                        help="格式：https://domain.com/cgi-bin/name 或 /cgi/a/name "
+                        label="一句话描述"
                     >
-                        {getFieldDecorator('requestURL', {
-                            initialValue: createMockerInfo.inputInfo.requestURL,
+                        {getFieldDecorator('description', {
+                            initialValue: createMockerInfo.mockerConfig.description,
                             rules: [
                                 {
                                     required: true
@@ -53,10 +52,10 @@ class CreateStep1 extends Component {
 
                     <FormItem
                         {...formItemLayout}
-                        label="请求类型"
+                        label="桩对象类型"
                     >
-                        {getFieldDecorator('method', {
-                            initialValue: createMockerInfo.mockerConfig.method,
+                        {getFieldDecorator('plugin', {
+                            initialValue: createMockerInfo.mockerConfig.plugin,
                             rules: [
                                 {
                                     required: true
@@ -64,8 +63,7 @@ class CreateStep1 extends Component {
                             ]
                         })(
                             <Select>
-                                <Select.Option value="get">GET</Select.Option>
-                                <Select.Option value="post">POST</Select.Option>
+                                <Select.Option value="xhr">XHR(适合基于http的接口)</Select.Option>
                             </Select>
                         )}
                     </FormItem>
@@ -92,7 +90,7 @@ class CreateStep1 extends Component {
                 <div className="desc">
                     <h3>说明</h3>
                     <p>
-                        这里是额外的说明
+                        关于"桩对象类型"的更多说明，请查看文档。
                     </p>
                 </div>
             </Fragment>
