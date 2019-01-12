@@ -27,7 +27,7 @@ class CreateStep1 extends Component {
 
         return (
             <Fragment>
-                <Form layout="horizontal" className="create-by-step-form">
+                <Form layout="horizontal" className="create-by-step-form step-confirm">
                     <FormItem
                         {...formItemLayout}
                         label="文件夹命名"
