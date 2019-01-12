@@ -21,8 +21,6 @@ class PageWorkspaceProject extends Component {
     render() {
         let { match } = this.props;
 
-        console.log('---match---', match);
-
         return (
             <div className="page-workspace-project">
                 <Route exact path={match.url} component={Dashboard} />

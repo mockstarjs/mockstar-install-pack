@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import Header from './header';
 import IframeContainer from './iframe-container';
 
-import './index.less';
 import { startCreateMocker } from '../../../data/data-create-mocker';
 
-class PageWorkspaceProject extends Component {
+import './index.less';
+
+class PageWorkspaceProjectDashboad extends Component {
     componentDidMount() {
 
     }
@@ -24,7 +25,7 @@ class PageWorkspaceProject extends Component {
 
     render() {
         return (
-            <div className="page-workspace-project">
+            <div className="page-workspace-project-dashboard">
                 <Header goCreateMocker={this.handleGoCreateMocker} />
                 <IframeContainer />
             </div>
@@ -48,4 +49,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PageWorkspaceProject);
+export default connect(mapStateToProps, mapDispatchToProps)(PageWorkspaceProjectDashboad);

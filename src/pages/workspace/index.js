@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
 import Home from './components/home';
+import CreateProject from './components/create-project';
 import Project from './components/project';
 
 import { loadLocalDBData } from '../../data/data-local-db';
@@ -21,7 +22,8 @@ class PageWorkspace extends Component {
         return (
             <div className="page-workspace">
                 <Route exact path={match.url} component={Home} />
-                <Route path={`${match.url}/:projectId`} component={Project} />
+                <Route strict path={`${match.url}/create-project`} component={CreateProject} />
+                <Route path={`${match.url}/project/:projectId`} component={Project} />
             </div>
         );
     }

@@ -19,13 +19,25 @@ class PageWorkspaceHome extends Component {
      * @param {Number} projectId 项目ID
      */
     handleGoProject = (projectId) => {
-        this.props.history.push(`${this.props.match.url}/${projectId}`);
+        this.props.history.push(`${this.props.match.url}/project/${projectId}`);
     };
+
+
+    /**
+     * 进入到创建 project 的页面
+     */
+    handleGoCreateProject = () => {
+        this.props.history.push(`${this.props.match.url}/create-project`);
+
+        // 一定要重置状态
+        // this.props.startCreateMocker();
+    };
+
 
     render() {
         return (
             <div className="page-workspace-home">
-                <Header />
+                <Header goCreateProject={this.handleGoCreateProject}/>
 
                 <ProjectList goProject={this.handleGoProject}/>
             </div>

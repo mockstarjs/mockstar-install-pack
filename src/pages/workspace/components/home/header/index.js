@@ -20,7 +20,7 @@ class PageWorkspaceHomeHeader extends Component {
     };
 
     handleCreateProject = () => {
-        message.info('创建项目');
+        this.props.goCreateProject();
     };
 
     handleGoHelp = () => {
