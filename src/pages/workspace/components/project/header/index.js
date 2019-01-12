@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { PageHeader } from 'ant-design-pro';
 
 import './index.less';
+import { Button, message } from 'antd';
 
 class PageWorkspaceProjectHeader extends Component {
     constructor(props, context) {
@@ -14,22 +15,33 @@ class PageWorkspaceProjectHeader extends Component {
 
     }
 
+    handleStart = () => {
+        message.info('启动');
+    };
+
+    handleStop = () => {
+        message.info('关闭');
+    };
+
+    handleCreateMocker = () => {
+        message.info('新增桩对象');
+    };
+
+    handleConfig = () => {
+        message.info('工程配置');
+    };
+
     render() {
         const { currentProjectInfo } = this.props;
 
         const content = (
             <div className="header-content-wrapper">
                 <p>{currentProjectInfo.description}</p>
-                <div className="link">
-                    <a>
-                        <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/MjEImQtenlyueSmVEfUD.svg" /> 启动/关闭
-                    </a>
-                    <a>
-                        <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/NbuDUAuBlIApFuDvWiND.svg" /> 新增桩对象
-                    </a>
-                    <a>
-                        <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/ohOEPSYdDTNnyMbGuyLb.svg" /> 工程配置
-                    </a>
+                <div className="action-wrapper">
+                    <Button type="primary" icon="check-circle" onClick={this.handleStart}>启动</Button>
+                    <Button type="primary" icon="stop" onClick={this.handleStop}>关闭</Button>
+                    <Button type="primary" icon="plus" onClick={this.handleCreateMocker}>新增桩对象</Button>
+                    <Button icon="setting" onClick={this.handleConfig}>配置</Button>
                 </div>
             </div>
         );

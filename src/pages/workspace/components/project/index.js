@@ -18,17 +18,17 @@ class PageWorkspaceProject extends Component {
         return (
             <div className="page-workspace-project">
                 <Header />
-                <IframeContainer/>
+                <IframeContainer />
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { projectInfo } = state;
+    const { currentProjectInfo } = state;
 
     return {
-        isLoaded: projectInfo.isLoaded
+        currentProjectInfo: currentProjectInfo
     };
 }
 
