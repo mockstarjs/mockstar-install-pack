@@ -19,6 +19,10 @@ const EVENT = {
         REQ: 'req-current-project-info',
         RSP: 'rsp-current-project-info'
     },
+    CREATE_PROJECT: {
+        REQ: 'req-create-project',
+        RSP: 'rsp-create-project'
+    },
     CREATE_MOCKER: {
         REQ: 'req-create-mocker',
         RSP: 'rsp-create-mocker'

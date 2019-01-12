@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import { Button, Divider, Form, Input, Select } from 'antd';
+import { Button, Divider, Form } from 'antd';
 import { formItemLayout } from './layout-config';
 
 const FormItem = Form.Item;
@@ -11,65 +11,37 @@ class CreateStep1 extends Component {
     };
 
     handleValidateForm = () => {
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                if (process.env.NODE_ENV !== 'production') {
-                    console.log('Received values of step1 form: ', values);
-                }
-
-                this.props.onSubmit(values);
-            }
-        });
+        this.props.onSubmit(this.props.createProjectInfo);
     };
 
     render() {
-        const { form, createMockerInfo, goBack } = this.props;
-        const { getFieldDecorator } = form;
+        const { createProjectInfo, goBack } = this.props;
 
         return (
             <Fragment>
-                <Form layout="horizontal" className="create-by-step-form">
+                <Form layout="horizontal" className="create-by-step-form step-stage-confirm">
+                    <FormItem
+                        {...formItemLayout}
+                        label="创建目录"
+                    >
+                        <span className="ant-form-text">
+                            {`${createProjectInfo.parentPath}/${createProjectInfo.name}`}
+                        </span>
+                    </FormItem>
+
                     <FormItem
                         {...formItemLayout}
                         label="一句话描述"
                     >
-                        <span className="ant-form-text">{createMockerInfo.mockerConfig.description}</span>
+                        <span className="ant-form-text">{createProjectInfo.description}</span>
                     </FormItem>
 
                     <FormItem
                         {...formItemLayout}
-                        label="接口地址"
-                        help="格式：https://domain.com/cgi-bin/name 或 /cgi/a/name "
+                        label="预分配端口号"
                     >
-                        {getFieldDecorator('requestURL', {
-                            initialValue: createMockerInfo.inputInfo.requestURL,
-                            rules: [
-                                {
-                                    required: true
-                                }
-                            ]
-                        })(<Input />)}
+                        <span className="ant-form-text">{createProjectInfo.port}</span>
                     </FormItem>
-
-                    <FormItem
-                        {...formItemLayout}
-                        label="请求类型"
-                    >
-                        {getFieldDecorator('method', {
-                            initialValue: createMockerInfo.mockerConfig.method,
-                            rules: [
-                                {
-                                    required: true
-                                }
-                            ]
-                        })(
-                            <Select>
-                                <Select.Option value="get">GET</Select.Option>
-                                <Select.Option value="post">POST</Select.Option>
-                            </Select>
-                        )}
-                    </FormItem>
-
 
                     <FormItem
                         wrapperCol={{
@@ -86,7 +58,7 @@ class CreateStep1 extends Component {
                         </Button>
 
                         <Button type="primary" onClick={this.handleValidateForm}>
-                            下一步
+                            提交
                         </Button>
                     </FormItem>
                 </Form>

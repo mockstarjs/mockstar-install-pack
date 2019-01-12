@@ -55,7 +55,7 @@ class CreateStep1 extends Component {
                     <FormItem
                         {...formItemLayout}
                         label="桩对象英文名"
-                        help="必须要符合文件夹命名规范"
+                        help="不能包含中文，且必须要符合文件夹命名规范"
                     >
                         {getFieldDecorator('name', {
                             initialValue: createMockerInfo.mockerConfig.name,

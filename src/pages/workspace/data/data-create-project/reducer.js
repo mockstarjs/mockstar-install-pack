@@ -1,55 +1,63 @@
-import { CREATE_NEW_PROJECT_SAVE_STEP1_FAIL, CREATE_NEW_PROJECT_SAVE_STEP1_SUCCESS } from './action';
 import _ from 'lodash';
+
+import {
+    CREATE_PROJECT_GO_STEP1,
+    CREATE_PROJECT_SAVE_REQUEST_SUCCESS,
+    CREATE_PROJECT_SAVE_STEP1_SUCCESS,
+    CREATE_PROJECT_START
+} from './action';
 
 const initialState = {
     // 父级目录
-    parentPath: '/Users/helinjiang/tmp-project-master',
+    parentPath: '/Users/helinjiang/gitprojects/now-h5-shake-redpacket',
 
     // 当前第几步
     curStep: 0,
 
-    // 项目基础信息
-    basicInfo: {
-        // 项目 owner
-        rtxName: 'linjianghe',
+    // 项目名称，必须符合文件夹命名规范
+    name: 'mockstar-app',
 
-        // 项目名
-        name: 'now-demo-ivweb-startkit',
+    // 项目中文名称
+    description: 'now-h5-shake-redpacket',
 
-        // 项目的中文别称
-        nickName: '脚手架 ivweb-startkit 样例',
-
-        // 项目描述信息
-        description: 'ivweb 团队基于 webpack3 + React 16 + Redux3的通用化脚手架项目的样例',
-
-        // 版本号
-        version: '0.1.0',
-    },
+    // 指定端口号，1024-65535
+    port: 9527,
 
     // 要在界面反馈的错误信息，可以是字符串，也可以是字符串数组
-    errMsg: '',
-
-    data: {}
+    errMsg: ''
 };
 
-function mockerInfo(state = initialState, action) {
+const cloneInitialState = _.cloneDeep(initialState);
+
+export default function createProjectInfo(state = initialState, action) {
     const { type, data } = action;
     let update = {};
 
     switch (type) {
-        case CREATE_NEW_PROJECT_SAVE_STEP1_SUCCESS:
+        case CREATE_PROJECT_START:
+            update = cloneInitialState;
+            break;
+
+        case CREATE_PROJECT_SAVE_STEP1_SUCCESS:
             update = {
-                basicInfo: _.merge({}, state.basicInfo, data),
+                parentPath: data.parentPath,
+                name: data.name,
+                description: data.description,
+                port: data.port,
                 errMsg: '',
                 curStep: 1
             };
-
             break;
 
-        case CREATE_NEW_PROJECT_SAVE_STEP1_FAIL:
+        case CREATE_PROJECT_GO_STEP1:
             update = {
-                errMsg: data,
                 curStep: 0
+            };
+            break;
+
+        case CREATE_PROJECT_SAVE_REQUEST_SUCCESS:
+            update = {
+                curStep: 3
             };
             break;
 
@@ -60,5 +68,4 @@ function mockerInfo(state = initialState, action) {
     return Object.keys(update).length ? Object.assign({}, state, update) : state;
 }
 
-export default mockerInfo;
 

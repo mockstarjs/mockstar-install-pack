@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import { Button, Divider, Form, Input, Select } from 'antd';
+import { Button, Divider, Form, Input, InputNumber, Select } from 'antd';
 import { formItemLayout } from './layout-config';
 
 const FormItem = Form.Item;
@@ -23,7 +23,7 @@ class CreateStep1 extends Component {
     };
 
     render() {
-        const { form, createMockerInfo, parentPath } = this.props;
+        const { form, createProjectInfo } = this.props;
         const { getFieldDecorator } = form;
 
         return (
@@ -31,11 +31,31 @@ class CreateStep1 extends Component {
                 <Form layout="horizontal" className="create-by-step-form">
                     <FormItem
                         {...formItemLayout}
-                        label="父级目录"
+                        label="项目的父级路径"
                     >
                         {getFieldDecorator('parentPath', {
-                            initialValue: parentPath
-                        })(<Input disabled />)}
+                            initialValue: createProjectInfo.parentPath,
+                            rules: [
+                                {
+                                    required: true
+                                }
+                            ]
+                        })(<Input/>)}
+                    </FormItem>
+
+                    <FormItem
+                        {...formItemLayout}
+                        label="项目英文名"
+                        help="不能包含中文，且必须要符合文件夹命名规范"
+                    >
+                        {getFieldDecorator('name', {
+                            initialValue: createProjectInfo.name,
+                            rules: [
+                                {
+                                    required: true
+                                }
+                            ]
+                        })(<Input />)}
                     </FormItem>
 
                     <FormItem
@@ -43,33 +63,24 @@ class CreateStep1 extends Component {
                         label="一句话描述"
                     >
                         {getFieldDecorator('description', {
-                            initialValue: createMockerInfo.mockerConfig.description,
+                            initialValue: createProjectInfo.description,
                             rules: [
                                 {
                                     required: true
                                 }
                             ]
-                        })(<Input placeholder="例如：获取用户信息的接口" />)}
+                        })(<Input placeholder="例如：摇一摇红包项目" />)}
                     </FormItem>
 
                     <FormItem
                         {...formItemLayout}
-                        label="桩对象类型"
+                        label="预分配端口号"
+                        help="端口号可配置区间1024-65535，默认值 9527"
                     >
-                        {getFieldDecorator('plugin', {
-                            initialValue: createMockerInfo.mockerConfig.plugin,
-                            rules: [
-                                {
-                                    required: true
-                                }
-                            ]
-                        })(
-                            <Select>
-                                <Select.Option value="xhr">XHR(适合基于http的接口)</Select.Option>
-                            </Select>
-                        )}
+                        {getFieldDecorator('port', {
+                            initialValue: createProjectInfo.port,
+                        })(<InputNumber min={1024} max={65535} />)}
                     </FormItem>
-
 
                     <FormItem
                         wrapperCol={{
