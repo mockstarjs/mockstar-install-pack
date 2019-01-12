@@ -32,10 +32,12 @@ class HomeProjectList extends Component {
                     dataSource={projects}
                     renderItem={item =>
                         <List.Item key={item.id}>
-                            <Card hoverable actions={[<a>关闭/启动</a>,
-                                <a onClick={this.handleGoProjectPage.bind(this, item)}>编辑</a>]}>
+                            <Card hoverable actions={[
+                                <a>关闭/启动</a>,
+                                <a onClick={this.handleGoProjectPage.bind(this, item)}>编辑</a>
+                            ]}>
                                 <Card.Meta
-                                    title={<a>{item.title}</a>}
+                                    title={<a onClick={this.handleGoProjectPage.bind(this, item)}>{item.title}</a>}
                                     description={
                                         <Ellipsis lines={3}>
                                             {item.description}
