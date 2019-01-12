@@ -60,10 +60,15 @@ export default function createMockerInfo(state = initialState, action) {
 
     switch (type) {
         case CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS:
-            update = _.merge({
+
+            update = {
+                mockerConfig: _.merge({}, state.mockerConfig, {
+                    plugin: data.plugin,
+                    description: data.description
+                }),
                 errMsg: '',
                 curStep: 1
-            }, data);
+            };
 
             break;
         default:

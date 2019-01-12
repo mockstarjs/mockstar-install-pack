@@ -47,7 +47,7 @@ class CreateStep1 extends Component {
                                     required: true
                                 }
                             ]
-                        })(<Input />)}
+                        })(<Input placeholder="例如：获取用户信息的接口"/>)}
                     </FormItem>
 
                     <FormItem
