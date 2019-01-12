@@ -6,7 +6,7 @@ import { Steps } from 'antd';
 import Step1 from './Step1';
 import Step2 from './Step2';
 
-import { saveStep1 } from '../../../data/data-create-project';
+import { saveStep1 } from '../../../../data/data-create-project';
 
 import './index.less';
 

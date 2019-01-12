@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Iframe from '../../../../../components/react-iframe';
+import Iframe from '../../../../../../components/react-iframe';
 
 import './index.less';
 

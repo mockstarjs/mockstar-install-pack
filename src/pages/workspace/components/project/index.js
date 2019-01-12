@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './index.less';
+import { Route } from 'react-router-dom';
+
 import { loadCurrentProjectData } from '../../data/data-current-project';
 
-import Header from './header';
-import IframeContainer from './iframe-container';
+import Dashboard from './dashboard';
+import CreateMocker from './create-mocker';
+
+import './index.less';
 
 class PageWorkspaceProject extends Component {
     componentDidMount() {
@@ -12,13 +15,18 @@ class PageWorkspaceProject extends Component {
         this.props.loadCurrentProjectData(this.props.match.params.projectId);
 
         // TODO 如果 projectId 非法
+
     }
 
     render() {
+        let { match } = this.props;
+
+        console.log('---match---', match);
+
         return (
             <div className="page-workspace-project">
-                <Header />
-                <IframeContainer />
+                <Route exact path={match.url} component={Dashboard} />
+                <Route path={`${match.path}/create-mocker`}  component={CreateMocker} />
             </div>
         );
     }
