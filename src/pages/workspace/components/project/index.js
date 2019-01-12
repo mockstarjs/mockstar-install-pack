@@ -9,9 +9,9 @@ import IframeContainer from './iframe-container';
 class PageWorkspaceProject extends Component {
     componentDidMount() {
         // 加载当前项目的信息
-        this.props.loadCurrentProjectData(this.props.match.params.projectName);
+        this.props.loadCurrentProjectData(this.props.match.params.projectId);
 
-        // TODO 如果 projectName 非法
+        // TODO 如果 projectId 非法
     }
 
     render() {
@@ -34,8 +34,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        loadCurrentProjectData(projectName) {
-            return dispatch(loadCurrentProjectData(projectName));
+        loadCurrentProjectData(projectId) {
+            return dispatch(loadCurrentProjectData(projectId));
         }
     };
 }

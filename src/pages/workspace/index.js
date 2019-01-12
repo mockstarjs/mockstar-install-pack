@@ -21,7 +21,7 @@ class PageWorkspace extends Component {
         return (
             <div className="page-workspace">
                 <Route exact path={match.url} component={Home} />
-                <Route path={`${match.url}/:projectName`} component={Project} />
+                <Route path={`${match.url}/:projectId`} component={Project} />
             </div>
         );
     }

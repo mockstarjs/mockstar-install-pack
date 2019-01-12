@@ -1,8 +1,9 @@
-const info = {
-    id: 1,
-    title: '摇一摇红包',
-    description: '摇一摇红包 description',
-    port: 9527
-};
+const { projects } = require('./database');
 
-module.exports = info;
+module.exports = (id) => {
+    const requestId = parseInt(id, 10);
+
+    return projects.filter((item) => {
+        return item.id === requestId;
+    })[0] || null;
+};
