@@ -31,7 +31,8 @@ class CreateByStep extends Component {
             goStep2,
             saveStep3,
             goStep3,
-            loadCreateMocker
+            loadCreateMocker,
+            goProjectHome
         } = this.props;
 
         const { curStep } = createMockerInfo;
@@ -89,6 +90,7 @@ class CreateByStep extends Component {
                     curStep === 4 ? (
                         <Step5
                             createMockerInfo={createMockerInfo}
+                            goProjectHome={goProjectHome}
                         />
                     ) : null
                 }

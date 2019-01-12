@@ -16,13 +16,13 @@ class PageWorkspaceProjectHeader extends Component {
     }
 
     render() {
-        const { currentProjectInfo, goBack } = this.props;
+        const { currentProjectInfo, goProjectHome } = this.props;
 
         const content = (
             <div className="header-content-wrapper">
                 <p>{currentProjectInfo.description}</p>
                 <div className="action-wrapper">
-                    <Button type="primary" icon="left" onClick={goBack}>返回</Button>
+                    <Button type="primary" icon="left" onClick={goProjectHome}>返回</Button>
                 </div>
             </div>
         );

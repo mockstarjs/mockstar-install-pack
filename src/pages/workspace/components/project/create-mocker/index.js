@@ -22,7 +22,7 @@ class WorkspaceCreateNewProject extends Component {
     /**
      * 返回上一级，即返回到 mocker 操作页面
      */
-    handleGoBack = () => {
+    handleGoProjectHome = () => {
         // 返回上一级目录
         const arr = this.props.match.url.split('/');
         arr.pop();
@@ -36,7 +36,7 @@ class WorkspaceCreateNewProject extends Component {
 
         return (
             <div className="page-workspace-project-create-mocker">
-                <Header goBack={this.handleGoBack} />
+                <Header goProjectHome={this.handleGoProjectHome} />
 
                 <div className="main-wrapper">
                     <Card bordered={false}>
@@ -44,7 +44,7 @@ class WorkspaceCreateNewProject extends Component {
                     </Card>
 
                     <Card bordered={false}>
-                        <CreateByStep />
+                        <CreateByStep goProjectHome={this.handleGoProjectHome}  />
                     </Card>
                 </div>
             </div>

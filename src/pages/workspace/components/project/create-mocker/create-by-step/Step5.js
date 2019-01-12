@@ -8,14 +8,15 @@ export default class CreateStep5 extends Component {
     }
 
     render() {
+        const { createMockerInfo, goProjectHome } = this.props;
         const information = (
-            <div>
+            <div className="step-result-panel">
                 <Row>
                     <Col xs={24} sm={8}>
                         路径：
                     </Col>
                     <Col xs={24} sm={16}>
-                        路径
+                        {createMockerInfo.parentPath + '/mockstar-app/mock_server/mockers/' + createMockerInfo.mockerConfig.name}
                     </Col>
                 </Row>
             </div>
@@ -24,10 +25,10 @@ export default class CreateStep5 extends Component {
         const actions = (
             <Fragment>
                 <Button type="primary">
-                    再转一笔
+                    继续创建
                 </Button>
 
-                <Button>查看账单</Button>
+                <Button onClick={goProjectHome}>返回</Button>
             </Fragment>
         );
 
