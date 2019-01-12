@@ -4,6 +4,10 @@ export const CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS = 'CREATE_NEW_MOCKER_SAVE_STEP
 export const CREATE_NEW_MOCKER_SAVE_STEP1_FAIL = 'CREATE_NEW_MOCKER_SAVE_STEP1_FAIL';
 export const CREATE_NEW_MOCKER_GO_STEP1 = 'CREATE_NEW_MOCKER_GO_STEP1';
 
+export const CREATE_NEW_MOCKER_SAVE_STEP2_SUCCESS = 'CREATE_NEW_MOCKER_SAVE_STEP2_SUCCESS';
+export const CREATE_NEW_MOCKER_SAVE_STEP2_FAIL = 'CREATE_NEW_MOCKER_SAVE_STEP2_FAIL';
+export const CREATE_NEW_MOCKER_GO_STEP2 = 'CREATE_NEW_MOCKER_GO_STEP2';
+
 export function saveStep1(data) {
     return {
         type: CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS,
@@ -17,22 +21,30 @@ export function goStep1() {
     };
 }
 
-
 export function saveStep2(data) {
     const { requestURL, method } = data;
 
-    console.log('=====path=====', getMockerNameFromURL(requestURL));
+    const urlParseResult = urlParse(requestURL);
+    const pathname = urlParseResult.pathname;
+    const name = pathname.split('/').pop().replace(/[\/|.]/g, '_');
+
+    if (process.env.NODE_ENV !== 'production') {
+        console.log('--urlParseResult--', urlParseResult);
+    }
 
     return {
-        type: CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS,
-        data: data
+        type: CREATE_NEW_MOCKER_SAVE_STEP2_SUCCESS,
+        data: {
+            requestURL,
+            method,
+            name,
+            pathname
+        }
     };
 }
 
-function getMockerNameFromURL(url) {
-    const urlParseResult = urlParse(url);
-
-    // return urlParseResult.pathname.replace(/[\/|.]/g,'_');
-    return urlParseResult.pathname.split('/').pop().replace(/[\/|.]/g, '_');
+export function goStep2() {
+    return {
+        type: CREATE_NEW_MOCKER_GO_STEP2
+    };
 }
-

@@ -1,5 +1,5 @@
 import reducer from './reducer';
 
-export { saveStep1, goStep1 } from './action';
+export { saveStep1, saveStep2, goStep1, goStep2 } from './action';
 
 export const createMockerInfo = reducer;

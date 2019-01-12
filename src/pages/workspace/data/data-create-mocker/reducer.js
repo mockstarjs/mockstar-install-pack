@@ -1,5 +1,11 @@
-import { CREATE_NEW_MOCKER_GO_STEP1, CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS } from './action';
 import _ from 'lodash';
+
+import {
+    CREATE_NEW_MOCKER_GO_STEP1,
+    CREATE_NEW_MOCKER_GO_STEP2,
+    CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS,
+    CREATE_NEW_MOCKER_SAVE_STEP2_SUCCESS
+} from './action';
 
 const initialState = {
     // 父级目录
@@ -73,6 +79,27 @@ export default function createMockerInfo(state = initialState, action) {
         case CREATE_NEW_MOCKER_GO_STEP1:
             update = {
                 curStep: 0
+            };
+            break;
+
+        case CREATE_NEW_MOCKER_SAVE_STEP2_SUCCESS:
+            update = {
+                mockerConfig: _.merge({}, state.mockerConfig, {
+                    method: data.method,
+                    name: data.name,
+                    route: data.pathname
+                }),
+                inputInfo: _.merge({}, state.inputInfo, {
+                    requestURL: data.requestURL
+                }),
+                errMsg: '',
+                curStep: 1
+            };
+            break;
+
+        case CREATE_NEW_MOCKER_GO_STEP2:
+            update = {
+                curStep: 1
             };
             break;
 

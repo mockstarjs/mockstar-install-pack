@@ -6,13 +6,13 @@ import { Steps } from 'antd';
 import Step1 from './Step1';
 import Step2 from './Step2';
 
-import { goStep1, saveStep1 } from '../../../../data/data-create-mocker';
+import { goStep1, saveStep1, saveStep2 } from '../../../../data/data-create-mocker';
 
 import './index.less';
 
 class CreateByStep extends Component {
     render() {
-        const { createMockerInfo, saveStep1, goStep1 } = this.props;
+        const { createMockerInfo, saveStep1, goStep1, saveStep2 } = this.props;
         const { curStep } = createMockerInfo;
 
         return (
@@ -37,6 +37,7 @@ class CreateByStep extends Component {
                     curStep === 1 ? (
                         <Step2
                             createMockerInfo={createMockerInfo}
+                            onSubmit={saveStep2}
                             goBack={goStep1}
                         />
                     ) : null
@@ -62,8 +63,13 @@ function mapDispatchToProps(dispatch) {
         saveStep1(data) {
             return dispatch(saveStep1(data));
         },
+
         goStep1() {
             return dispatch(goStep1());
+        },
+
+        saveStep2(data) {
+            return dispatch(saveStep2(data));
         }
     };
 }
