@@ -1,5 +1,6 @@
 const path = require('path');
 const { ipcMain, dialog } = require('electron');
+const fse = require('fs-extra');
 
 const { EVENT } = require('../../src/business/electron-main-render-common');
 
@@ -11,6 +12,8 @@ const { EVENT } = require('../../src/business/electron-main-render-common');
  */
 ipcMain.on(EVENT.CREATE_MOCKER.REQ, (event, opts) => {
     const data = require(path.join(__dirname, '../../src/business/mock/create-mocker-result'))(opts);
+
+    fse.outputJsonSync(path.join(__dirname, '../../tmp/onlytest.json'), data);
 
     event.sender.send(EVENT.CREATE_MOCKER.RSP, {
         retcode: 0,
