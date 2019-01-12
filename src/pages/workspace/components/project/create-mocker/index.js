@@ -6,6 +6,8 @@ import { Card } from 'antd';
 import CreateByStep from './create-by-step';
 import ErrorTips from './error-tips';
 
+import Header from './header';
+
 import './index.less';
 
 class WorkspaceCreateNewProject extends Component {
@@ -17,19 +19,34 @@ class WorkspaceCreateNewProject extends Component {
 
     }
 
+    /**
+     * 返回上一级，即返回到 mocker 操作页面
+     */
+    handleGoBack = () => {
+        // 返回上一级目录
+        const arr = this.props.match.url.split('/');
+        arr.pop();
+
+        this.props.history.push(arr.join('/'));
+    };
+
     render() {
         const { createProjectInfo } = this.props;
         const { errMsg } = createProjectInfo;
 
         return (
-            <div className="page-workspace-create-new-project">
-                <Card bordered={false}>
-                    <ErrorTips message={errMsg} />
-                </Card>
+            <div className="page-workspace-project-create-mocker">
+                <Header goBack={this.handleGoBack} />
 
-                <Card bordered={false}>
-                    <CreateByStep />
-                </Card>
+                <div className="main-wrapper">
+                    <Card bordered={false}>
+                        <ErrorTips message={errMsg} />
+                    </Card>
+
+                    <Card bordered={false}>
+                        <CreateByStep />
+                    </Card>
+                </div>
             </div>
         );
     }
