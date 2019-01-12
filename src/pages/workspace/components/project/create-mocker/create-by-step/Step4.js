@@ -11,15 +11,7 @@ class CreateStep1 extends Component {
     };
 
     handleValidateForm = () => {
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                if (process.env.NODE_ENV !== 'production') {
-                    console.log('Received values of step1 form: ', values);
-                }
-
-                this.props.onSubmit(values);
-            }
-        });
+        this.props.onSubmit(this.props.createMockerInfo);
     };
 
     render() {

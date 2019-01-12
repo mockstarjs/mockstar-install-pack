@@ -18,6 +18,10 @@ const EVENT = {
     CURRENT_PROJECT_INFO: {
         REQ: 'req-current-project-info',
         RSP: 'rsp-current-project-info'
+    },
+    CREATE_MOCKER: {
+        REQ: 'req-create-mocker',
+        RSP: 'rsp-create-mocker'
     }
 };
 

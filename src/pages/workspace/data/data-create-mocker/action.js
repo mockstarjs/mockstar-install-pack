@@ -1,3 +1,6 @@
+import { CALL_ELECTRON_REQUEST } from '../../../../middlewares/electron-request';
+import { EVENT } from '../../../../business/electron-main-render-common';
+
 const urlParse = require('url-parse');
 
 export const CREATE_NEW_MOCKER_START = 'CREATE_NEW_MOCKER_START';
@@ -14,8 +17,9 @@ export const CREATE_NEW_MOCKER_SAVE_STEP3_SUCCESS = 'CREATE_NEW_MOCKER_SAVE_STEP
 export const CREATE_NEW_MOCKER_SAVE_STEP3_FAIL = 'CREATE_NEW_MOCKER_SAVE_STEP3_FAIL';
 export const CREATE_NEW_MOCKER_GO_STEP3 = 'CREATE_NEW_MOCKER_GO_STEP3';
 
-export const CREATE_NEW_MOCKER_SAVE_SUCCESS = 'CREATE_NEW_MOCKER_SAVE_SUCCESS';
-export const CREATE_NEW_MOCKER_SAVE_FAIL = 'CREATE_NEW_MOCKER_SAVE_FAIL';
+export const CREATE_NEW_MOCKER_SAVE_REQUEST = 'CREATE_NEW_MOCKER_SAVE_REQUEST';
+export const CREATE_NEW_MOCKER_SAVE_REQUEST_SUCCESS = 'CREATE_NEW_MOCKER_SAVE_REQUEST_SUCCESS';
+export const CREATE_NEW_MOCKER_SAVE_REQUEST_FAIL = 'CREATE_NEW_MOCKER_SAVE_REQUEST_FAIL';
 
 export function startCreateMocker() {
     return {
@@ -77,9 +81,20 @@ export function goStep3() {
     };
 }
 
-export function loadCreateMocker(data) {
+function fetchCreateMocker(data) {
     return {
-        type: CREATE_NEW_MOCKER_SAVE_SUCCESS,
-        data: data
+        [CALL_ELECTRON_REQUEST]: {
+            types: [CREATE_NEW_MOCKER_SAVE_REQUEST, CREATE_NEW_MOCKER_SAVE_REQUEST_SUCCESS, CREATE_NEW_MOCKER_SAVE_REQUEST_FAIL],
+            reqEvent: EVENT.CREATE_MOCKER.REQ,
+            rspEvent: EVENT.CREATE_MOCKER.RSP,
+            data: data,
+            _debug: require('../../../../business/mock/create-mocker-result')(data)
+        }
+    };
+}
+
+export function loadCreateMocker(data) {
+    return (dispatch) => {
+        return dispatch(fetchCreateMocker(data));
     };
 }
