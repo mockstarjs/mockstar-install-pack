@@ -3,7 +3,7 @@ import { Alert } from 'antd';
 
 import './index.less';
 
-export default function Index(props) {
+export default function ShowErrorTips(props) {
     const { message } = props;
 
     if (!message) {
@@ -19,7 +19,7 @@ export default function Index(props) {
     }
 
     return (
-        <div className="create-new-project-tips">
+        <div className="show-error-tips">
             {
                 list.map((item, index) => {
                     return (

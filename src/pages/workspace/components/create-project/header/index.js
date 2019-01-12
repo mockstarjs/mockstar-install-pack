@@ -16,13 +16,13 @@ class PageWorkspaceProjectHeader extends Component {
     }
 
     render() {
-        const { currentProjectInfo, goProjectHome } = this.props;
+        const { currentProjectInfo, goHome } = this.props;
 
         const content = (
             <div className="header-content-wrapper">
-                <p>{currentProjectInfo.description}</p>
+                <p>按照指引创建新项目即可。</p>
                 <div className="action-wrapper">
-                    <Button type="primary" icon="left" onClick={goProjectHome}>返回</Button>
+                    <Button type="primary" icon="left" onClick={goHome}>返回</Button>
                 </div>
             </div>
         );
@@ -30,7 +30,7 @@ class PageWorkspaceProjectHeader extends Component {
         return (
             <div className="page-workspace-project-header">
                 <PageHeader
-                    title={currentProjectInfo.title}
+                    title="创建新项目"
                     content={content}
                 />
             </div>

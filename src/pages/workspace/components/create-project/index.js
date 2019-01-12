@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import { Card } from 'antd';
 
+import ShowErrorTips from '../../../../components/show-error-tips';
 import CreateByStep from './create-by-step';
-import ErrorTips from './error-tips';
 import Header from './header';
 
 import { startCreateMocker } from '../../data/data-create-mocker';
@@ -23,7 +23,7 @@ class WorkspaceCreateNewProject extends Component {
     /**
      * 返回上一级，即返回到 mocker 操作页面
      */
-    handleGoProjectHome = () => {
+    handleGoHome = () => {
         // 返回上一级目录
         const arr = this.props.match.url.split('/');
         arr.pop();
@@ -32,11 +32,11 @@ class WorkspaceCreateNewProject extends Component {
     };
 
     /**
-     * 进入到创建 mocker 的页面
+     * 进入到创建 project 的页面
      */
-    handleGoCreateMocker = () => {
+    handleGoCreateProject = () => {
         // 一定要重置状态
-        this.props.startCreateMocker();
+        // this.props.startCreateMocker();
     };
 
     render() {
@@ -45,17 +45,17 @@ class WorkspaceCreateNewProject extends Component {
 
         return (
             <div className="page-workspace-project-create-mocker">
-                <Header goProjectHome={this.handleGoProjectHome} />
+                <Header goHome={this.handleGoHome} />
 
                 <div className="create-by-step-wrapper">
                     <Card bordered={false}>
-                        <ErrorTips message={errMsg} />
+                        <ShowErrorTips message={errMsg} />
                     </Card>
 
                     <Card bordered={false}>
                         <CreateByStep
-                            goProjectHome={this.handleGoProjectHome}
-                            goCreateMocker={this.handleGoCreateMocker}
+                            goProjectHome={this.handleGoHome}
+                            goCreateProject={this.handleGoCreateProject}
                         />
                     </Card>
                 </div>

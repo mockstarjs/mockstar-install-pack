@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 
 import { Card } from 'antd';
 
+import ShowErrorTips from '../../../../../components/show-error-tips';
 import CreateByStep from './create-by-step';
-import ErrorTips from './error-tips';
+
 import Header from './header';
 
 import { startCreateMocker } from '../../../data/data-create-mocker';
@@ -49,7 +50,7 @@ class WorkspaceCreateNewProject extends Component {
 
                 <div className="create-by-step-wrapper">
                     <Card bordered={false}>
-                        <ErrorTips message={errMsg} />
+                        <ShowErrorTips message={errMsg} />
                     </Card>
 
                     <Card bordered={false}>
