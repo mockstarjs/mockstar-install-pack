@@ -5,6 +5,7 @@ import Header from './header';
 import ProjectList from './project-list';
 
 import { loadLocalDBData } from '../../../../data/data-local-db';
+import { startCreateProject } from '../../data/data-create-project';
 
 import './index.less';
 
@@ -22,7 +23,6 @@ class PageWorkspaceHome extends Component {
         this.props.history.push(`${this.props.match.url}/project/${projectId}`);
     };
 
-
     /**
      * 进入到创建 project 的页面
      */
@@ -30,16 +30,15 @@ class PageWorkspaceHome extends Component {
         this.props.history.push(`${this.props.match.url}/create-project`);
 
         // 一定要重置状态
-        // this.props.startCreateMocker();
+        this.props.startCreateProject();
     };
-
 
     render() {
         return (
             <div className="page-workspace-home">
-                <Header goCreateProject={this.handleGoCreateProject}/>
+                <Header goCreateProject={this.handleGoCreateProject} />
 
-                <ProjectList goProject={this.handleGoProject}/>
+                <ProjectList goProject={this.handleGoProject} />
             </div>
         );
     }
@@ -57,6 +56,10 @@ function mapDispatchToProps(dispatch) {
     return {
         loadLocalDBData() {
             return dispatch(loadLocalDBData());
+        },
+
+        startCreateProject() {
+            return dispatch(startCreateProject());
         }
     };
 }
