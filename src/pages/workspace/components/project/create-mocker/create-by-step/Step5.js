@@ -33,7 +33,7 @@ export default class CreateStep5 extends Component {
             <Result
                 type="success"
                 title="操作成功"
-                description="预计两小时内到账"
+                description=""
                 extra={information}
                 actions={actions}
             />

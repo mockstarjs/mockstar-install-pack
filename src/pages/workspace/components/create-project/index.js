@@ -7,7 +7,7 @@ import ShowErrorTips from '../../../../components/show-error-tips';
 import CreateByStep from './create-by-step';
 import Header from './header';
 
-import { startCreateMocker } from '../../data/data-create-mocker';
+import { startCreateProject } from '../../data/data-create-project';
 
 import './index.less';
 
@@ -36,7 +36,7 @@ class WorkspaceCreateNewProject extends Component {
      */
     handleGoCreateProject = () => {
         // 一定要重置状态
-        // this.props.startCreateMocker();
+        this.props.startCreateProject();
     };
 
     render() {
@@ -54,7 +54,7 @@ class WorkspaceCreateNewProject extends Component {
 
                     <Card bordered={false}>
                         <CreateByStep
-                            goProjectHome={this.handleGoHome}
+                            goHome={this.handleGoHome}
                             goCreateProject={this.handleGoCreateProject}
                         />
                     </Card>
@@ -74,8 +74,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        startCreateMocker() {
-            return dispatch(startCreateMocker());
+        startCreateProject() {
+            return dispatch(startCreateProject());
         }
     };
 }

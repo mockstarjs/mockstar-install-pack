@@ -16,10 +16,10 @@ class CreateByStep extends Component {
         const {
             parentPath,
             createProjectInfo,
+            loadCreateProject,
             saveStep1,
             goStep1,
-            saveStep2,
-            goProjectHome,
+            goHome,
             goCreateProject
         } = this.props;
 
@@ -47,7 +47,7 @@ class CreateByStep extends Component {
                     curStep === 1 ? (
                         <Step2
                             createProjectInfo={createProjectInfo}
-                            onSubmit={saveStep2}
+                            onSubmit={loadCreateProject}
                             goBack={goStep1}
                         />
                     ) : null
@@ -56,8 +56,8 @@ class CreateByStep extends Component {
                     curStep === 2 ? (
                         <Step3
                             createProjectInfo={createProjectInfo}
-                            goProjectHome={goProjectHome}
-                            goCreateMocker={goCreateProject}
+                            goHome={goHome}
+                            goCreateProject={goCreateProject}
                         />
                     ) : null
                 }

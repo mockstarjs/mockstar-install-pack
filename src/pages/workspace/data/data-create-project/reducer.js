@@ -57,7 +57,7 @@ export default function createProjectInfo(state = initialState, action) {
 
         case CREATE_PROJECT_SAVE_REQUEST_SUCCESS:
             update = {
-                curStep: 3
+                curStep: 2
             };
             break;
 
