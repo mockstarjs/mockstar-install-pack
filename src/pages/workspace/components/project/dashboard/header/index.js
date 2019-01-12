@@ -24,7 +24,7 @@ class PageWorkspaceProjectHeader extends Component {
     };
 
     handleCreateMocker = () => {
-        message.info('新增桩对象');
+        this.props.goCreateMocker();
     };
 
     handleConfig = () => {

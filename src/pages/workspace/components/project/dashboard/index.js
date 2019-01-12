@@ -11,10 +11,17 @@ class PageWorkspaceProject extends Component {
 
     }
 
+    /**
+     * 进入到创建 mocker 的页面
+     */
+    handleGoCreateMocker = () => {
+        this.props.history.push(`${this.props.match.url}/create-mocker`);
+    };
+
     render() {
         return (
             <div className="page-workspace-project">
-                <Header />
+                <Header goCreateMocker={this.handleGoCreateMocker} />
                 <IframeContainer />
             </div>
         );
