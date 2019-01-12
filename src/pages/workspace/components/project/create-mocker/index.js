@@ -5,8 +5,9 @@ import { Card } from 'antd';
 
 import CreateByStep from './create-by-step';
 import ErrorTips from './error-tips';
-
 import Header from './header';
+
+import { startCreateMocker } from '../../../data/data-create-mocker';
 
 import './index.less';
 
@@ -30,6 +31,14 @@ class WorkspaceCreateNewProject extends Component {
         this.props.history.push(arr.join('/'));
     };
 
+    /**
+     * 进入到创建 mocker 的页面
+     */
+    handleGoCreateMocker = () => {
+        // 一定要重置状态
+        this.props.startCreateMocker();
+    };
+
     render() {
         const { createMockerInfo } = this.props;
         const { errMsg } = createMockerInfo;
@@ -38,13 +47,16 @@ class WorkspaceCreateNewProject extends Component {
             <div className="page-workspace-project-create-mocker">
                 <Header goProjectHome={this.handleGoProjectHome} />
 
-                <div className="main-wrapper">
+                <div className="create-by-step-wrapper">
                     <Card bordered={false}>
                         <ErrorTips message={errMsg} />
                     </Card>
 
                     <Card bordered={false}>
-                        <CreateByStep goProjectHome={this.handleGoProjectHome} />
+                        <CreateByStep
+                            goProjectHome={this.handleGoProjectHome}
+                            goCreateMocker={this.handleGoCreateMocker}
+                        />
                     </Card>
                 </div>
             </div>
@@ -60,4 +72,12 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(WorkspaceCreateNewProject);
+function mapDispatchToProps(dispatch) {
+    return {
+        startCreateMocker() {
+            return dispatch(startCreateMocker());
+        }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WorkspaceCreateNewProject);

@@ -3,12 +3,9 @@ import { Button, Col, Row } from 'antd';
 import { Result } from 'ant-design-pro';
 
 export default class CreateStep5 extends Component {
-    constructor(props, context) {
-        super(props, context);
-    }
-
     render() {
-        const { createMockerInfo, goProjectHome } = this.props;
+        const { createMockerInfo, goProjectHome, goCreateMocker } = this.props;
+
         const information = (
             <div className="step-result-panel">
                 <Row>
@@ -24,7 +21,7 @@ export default class CreateStep5 extends Component {
 
         const actions = (
             <Fragment>
-                <Button type="primary">
+                <Button type="primary" onClick={goCreateMocker}>
                     继续创建
                 </Button>
 

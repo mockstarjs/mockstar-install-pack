@@ -32,15 +32,16 @@ class CreateByStep extends Component {
             saveStep3,
             goStep3,
             loadCreateMocker,
-            goProjectHome
+            goProjectHome,
+            goCreateMocker
         } = this.props;
 
         const { curStep } = createMockerInfo;
 
         return (
-            <Fragment>
+            <div className="create-by-step">
 
-                <Steps current={curStep} className="create-by-step">
+                <Steps current={curStep} className="step-tab">
                     <Steps.Step title="选择类型" />
                     <Steps.Step title="基础信息" />
                     <Steps.Step title="其他信息" />
@@ -91,10 +92,11 @@ class CreateByStep extends Component {
                         <Step5
                             createMockerInfo={createMockerInfo}
                             goProjectHome={goProjectHome}
+                            goCreateMocker={goCreateMocker}
                         />
                     ) : null
                 }
-            </Fragment>
+            </div>
         );
     }
 }

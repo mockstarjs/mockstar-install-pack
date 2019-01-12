@@ -28,7 +28,7 @@ class CreateStep1 extends Component {
 
         return (
             <Fragment>
-                <Form layout="horizontal" className="create-by-step-form">
+                <Form layout="horizontal" className="create-by-step-form" >
                     <FormItem
                         {...formItemLayout}
                         label="父级目录"

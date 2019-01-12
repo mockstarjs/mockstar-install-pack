@@ -5,6 +5,7 @@ import Header from './header';
 import IframeContainer from './iframe-container';
 
 import './index.less';
+import { startCreateMocker } from '../../../data/data-create-mocker';
 
 class PageWorkspaceProject extends Component {
     componentDidMount() {
@@ -16,6 +17,9 @@ class PageWorkspaceProject extends Component {
      */
     handleGoCreateMocker = () => {
         this.props.history.push(`${this.props.match.url}/create-mocker`);
+
+        // 一定要重置状态
+        this.props.startCreateMocker();
     };
 
     render() {
@@ -36,4 +40,12 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(PageWorkspaceProject);
+function mapDispatchToProps(dispatch) {
+    return {
+        startCreateMocker() {
+            return dispatch(startCreateMocker());
+        }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageWorkspaceProject);

@@ -7,7 +7,8 @@ import {
     CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS,
     CREATE_NEW_MOCKER_SAVE_STEP2_SUCCESS,
     CREATE_NEW_MOCKER_SAVE_STEP3_SUCCESS,
-    CREATE_NEW_MOCKER_SAVE_SUCCESS
+    CREATE_NEW_MOCKER_SAVE_SUCCESS,
+    CREATE_NEW_MOCKER_START
 } from './action';
 
 const initialState = {
@@ -15,7 +16,7 @@ const initialState = {
     parentPath: '/Users/helinjiang/tmp-project-master',
 
     // 当前第几步
-    curStep: 1,
+    curStep: 0,
 
     // mocker config 信息
     mockerConfig: {
@@ -63,11 +64,17 @@ const initialState = {
     errMsg: ''
 };
 
+const cloneInitialState = _.cloneDeep(initialState);
+
 export default function createMockerInfo(state = initialState, action) {
     const { type, data } = action;
     let update = {};
 
     switch (type) {
+        case CREATE_NEW_MOCKER_START:
+            update = cloneInitialState;
+            break;
+
         case CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS:
             update = {
                 mockerConfig: _.merge({}, state.mockerConfig, {
