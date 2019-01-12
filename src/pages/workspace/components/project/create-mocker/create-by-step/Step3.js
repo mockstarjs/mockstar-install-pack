@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import { Button, Divider, Form, Input, InputNumber, Select } from 'antd';
 import { formItemLayout } from './layout-config';
-import EditableTagGroup from './EditableTagGroup';
+import EditableTagGroup from '../../../../../../components/editable-tag-group';
 
 const FormItem = Form.Item;
 
