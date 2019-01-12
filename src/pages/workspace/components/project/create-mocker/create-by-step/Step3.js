@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import { Button, Divider, Form, Input, InputNumber, Select } from 'antd';
 import { formItemLayout } from './layout-config';
+import EditableTagGroup from './EditableTagGroup';
 
 const FormItem = Form.Item;
 
@@ -110,14 +111,14 @@ class CreateStep1 extends Component {
                     >
                         {getFieldDecorator('priority', {
                             initialValue: createMockerInfo.mockerConfig.priority,
-                            rules: [
-                                {
-                                    required: true
-                                }
-                            ]
                         })(<InputNumber min={0} max={9999999} />)}
                     </FormItem>
 
+                    <FormItem {...formItemLayout} label="自定义标签">
+                        {getFieldDecorator('tags', {
+                            initialValue: createMockerInfo.mockerConfig.tags,
+                        })(<EditableTagGroup />)}
+                    </FormItem>
 
                     <FormItem
                         wrapperCol={{

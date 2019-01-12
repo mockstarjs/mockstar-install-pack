@@ -32,7 +32,7 @@ export default class EditableTagGroup extends Component {
 
     handleInputConfirm = () => {
         const inputValue = this.state.inputValue;
-        let value = this.props.value;
+        let value = this.props.value || [];
 
         if (inputValue && value.indexOf(inputValue) === -1) {
             value = [...value, inputValue];
@@ -51,7 +51,7 @@ export default class EditableTagGroup extends Component {
     saveInputRef = input => this.input = input;
 
     render() {
-        const { value } = this.props;
+        const { value = [] } = this.props;
         const { inputVisible, inputValue } = this.state;
 
         return (
@@ -100,7 +100,7 @@ export default class EditableTagGroup extends Component {
 }
 
 EditableTagGroup.defaultProps = {
-    value: [],
+    // value: [],
     onChange: (value) => {
     }
 };
