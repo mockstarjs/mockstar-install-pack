@@ -24,6 +24,7 @@ import './index.less';
 class CreateByStep extends Component {
     render() {
         const {
+            parentPath,
             createMockerInfo,
             saveStep1,
             goStep1,
@@ -53,6 +54,7 @@ class CreateByStep extends Component {
                     curStep === 0 ? (
                         <Step1
                             createMockerInfo={createMockerInfo}
+                            parentPath={parentPath}
                             onSubmit={saveStep1}
                         />
                     ) : null
@@ -102,12 +104,10 @@ class CreateByStep extends Component {
 }
 
 function mapStateToProps(state) {
-    const { projectInfo, createMockerInfo } = state;
+    const { currentProjectInfo, createMockerInfo } = state;
 
     return {
-        isLoaded: projectInfo.isLoaded,
-        isSuccess: projectInfo.isSuccess,
-        data: projectInfo.data,
+        parentPath: currentProjectInfo.basePath,
         createMockerInfo: createMockerInfo
     };
 }

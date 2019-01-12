@@ -23,17 +23,19 @@ class CreateStep1 extends Component {
     };
 
     render() {
-        const { form, createMockerInfo } = this.props;
+        const { form, createMockerInfo, parentPath } = this.props;
         const { getFieldDecorator } = form;
 
         return (
             <Fragment>
-                <Form layout="horizontal" className="create-by-step-form" >
+                <Form layout="horizontal" className="create-by-step-form">
                     <FormItem
                         {...formItemLayout}
                         label="父级目录"
                     >
-                        <span className="ant-form-text">{createMockerInfo.parentPath}</span>
+                        {getFieldDecorator('parentPath', {
+                            initialValue: parentPath
+                        })(<Input disabled />)}
                     </FormItem>
 
                     <FormItem
@@ -47,7 +49,7 @@ class CreateStep1 extends Component {
                                     required: true
                                 }
                             ]
-                        })(<Input placeholder="例如：获取用户信息的接口"/>)}
+                        })(<Input placeholder="例如：获取用户信息的接口" />)}
                     </FormItem>
 
                     <FormItem

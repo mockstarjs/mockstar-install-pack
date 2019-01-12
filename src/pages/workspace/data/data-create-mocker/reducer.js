@@ -4,16 +4,16 @@ import {
     CREATE_NEW_MOCKER_GO_STEP1,
     CREATE_NEW_MOCKER_GO_STEP2,
     CREATE_NEW_MOCKER_GO_STEP3,
+    CREATE_NEW_MOCKER_SAVE_REQUEST_SUCCESS,
     CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS,
     CREATE_NEW_MOCKER_SAVE_STEP2_SUCCESS,
     CREATE_NEW_MOCKER_SAVE_STEP3_SUCCESS,
-    CREATE_NEW_MOCKER_SAVE_REQUEST_SUCCESS,
     CREATE_NEW_MOCKER_START
 } from './action';
 
 const initialState = {
     // 父级目录
-    parentPath: '/Users/helinjiang/tmp-project-master',
+    parentPath: '',
 
     // 当前第几步
     curStep: 0,
@@ -81,6 +81,7 @@ export default function createMockerInfo(state = initialState, action) {
                     plugin: data.plugin,
                     description: data.description
                 }),
+                parentPath: data.parentPath,
                 errMsg: '',
                 curStep: 1
             };
