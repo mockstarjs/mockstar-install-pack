@@ -8,6 +8,10 @@ export const CREATE_NEW_MOCKER_SAVE_STEP2_SUCCESS = 'CREATE_NEW_MOCKER_SAVE_STEP
 export const CREATE_NEW_MOCKER_SAVE_STEP2_FAIL = 'CREATE_NEW_MOCKER_SAVE_STEP2_FAIL';
 export const CREATE_NEW_MOCKER_GO_STEP2 = 'CREATE_NEW_MOCKER_GO_STEP2';
 
+export const CREATE_NEW_MOCKER_SAVE_STEP3_SUCCESS = 'CREATE_NEW_MOCKER_SAVE_STEP3_SUCCESS';
+export const CREATE_NEW_MOCKER_SAVE_STEP3_FAIL = 'CREATE_NEW_MOCKER_SAVE_STEP3_FAIL';
+export const CREATE_NEW_MOCKER_GO_STEP3 = 'CREATE_NEW_MOCKER_GO_STEP3';
+
 export function saveStep1(data) {
     return {
         type: CREATE_NEW_MOCKER_SAVE_STEP1_SUCCESS,
@@ -46,5 +50,18 @@ export function saveStep2(data) {
 export function goStep2() {
     return {
         type: CREATE_NEW_MOCKER_GO_STEP2
+    };
+}
+
+export function saveStep3(data) {
+    return {
+        type: CREATE_NEW_MOCKER_SAVE_STEP3_SUCCESS,
+        data: data
+    };
+}
+
+export function goStep3() {
+    return {
+        type: CREATE_NEW_MOCKER_GO_STEP3
     };
 }
