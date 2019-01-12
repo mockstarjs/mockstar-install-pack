@@ -31,8 +31,8 @@ class WorkspaceCreateNewProject extends Component {
     };
 
     render() {
-        const { createProjectInfo } = this.props;
-        const { errMsg } = createProjectInfo;
+        const { createMockerInfo } = this.props;
+        const { errMsg } = createMockerInfo;
 
         return (
             <div className="page-workspace-project-create-mocker">
@@ -44,7 +44,7 @@ class WorkspaceCreateNewProject extends Component {
                     </Card>
 
                     <Card bordered={false}>
-                        <CreateByStep goProjectHome={this.handleGoProjectHome}  />
+                        <CreateByStep goProjectHome={this.handleGoProjectHome} />
                     </Card>
                 </div>
             </div>
@@ -53,13 +53,10 @@ class WorkspaceCreateNewProject extends Component {
 }
 
 function mapStateToProps(state) {
-    const { projectInfo, createProjectInfo } = state;
+    const { createMockerInfo } = state;
 
     return {
-        isLoaded: projectInfo.isLoaded,
-        isSuccess: projectInfo.isSuccess,
-        data: projectInfo.data,
-        createProjectInfo: createProjectInfo
+        createMockerInfo: createMockerInfo
     };
 }
 
