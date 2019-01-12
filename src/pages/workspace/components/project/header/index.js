@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Button, message } from 'antd';
 import { PageHeader } from 'ant-design-pro';
 
 import './index.less';
-import { Button, message } from 'antd';
 
 class PageWorkspaceProjectHeader extends Component {
     constructor(props, context) {
