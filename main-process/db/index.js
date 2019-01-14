@@ -38,3 +38,41 @@ function saveProject(data = {}) {
     // 保存
     saveData(cacheData);
 }
+
+module.exports = {
+    getProjectById,
+    saveProject,
+    saveData,
+    getData
+};
+
+// saveData({
+//     info: {
+//         cwd: 'a/b/c'
+//     },
+//     projects: [{
+//         id: 1,
+//         title: '摇一摇红包',
+//         description: '摇一摇红包 description',
+//         port: 9527,
+//         basePath: '/Users/helinjiang/gitprojects/now-h5-shake-redpacket/mockstar-app'
+//     }, {
+//         id: 2,
+//         title: 'title2',
+//         description: 'description2',
+//         port: 9528
+//     }, {
+//         id: 3,
+//         title: 'title3',
+//         description: 'description3',
+//         port: 9529
+//     }, {
+//         id: 4,
+//         title: 'title4',
+//         description: 'description4',
+//         port: 9530
+//     }]
+// });
+//
+// console.log(getData());
+// console.log(getProjectById(1));
