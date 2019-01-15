@@ -24,6 +24,8 @@ ipcMain.on(EVENT.OPEN_PROJECT.REQ, (event, opts) => {
         // 取数组第一个值
         const selectedDirectory = files[0];
 
+        // 注意，选择的文件目录不一定是 mockstar 项目
+
         event.sender.send(EVENT.OPEN_PROJECT.RSP, {
             retcode: 0,
             result: {

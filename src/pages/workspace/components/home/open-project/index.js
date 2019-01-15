@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Modal } from 'antd';
 
-import { hideOpenProjectDlg } from '../../../data/data-open-project';
+import OpenForm from './open-form';
+import { hideOpenProjectDlg, saveOpenProjectLocal } from '../../../data/data-open-project';
 
 import './index.less';
 
@@ -11,8 +11,20 @@ class LoadProject extends Component {
         super(props, context);
     }
 
+    openFormRef = (form) => {
+        this.form = form;
+    };
+
     handleOk = () => {
-        console.log('===handleOk====');
+        this.form.validateFields((err, values) => {
+            if (!err) {
+                if (process.env.NODE_ENV !== 'production') {
+                    console.log('Received values of step1 form: ', values);
+                }
+
+                this.props.saveOpenProjectLocal(values);
+            }
+        });
     };
 
     handleCancel = () => {
@@ -27,15 +39,13 @@ class LoadProject extends Component {
             <div className="load-project">
                 <div>{selectedDirectory}</div>
 
-                <Modal
-                    title="补充基本信息"
-                    visible={showDlg}
-                    onOk={this.handleOk}
+                <OpenForm
+                    ref={this.openFormRef}
+                    selectedDirectory={selectedDirectory}
+                    showDlg={showDlg}
                     onCancel={this.handleCancel}
-                >
-                    <p>hello</p>
-                    <div>{selectedDirectory}</div>
-                </Modal>
+                    onOk={this.handleOk}
+                />
 
             </div>
         );
@@ -55,6 +65,10 @@ function mapDispatchToProps(dispatch) {
     return {
         hideOpenProjectDlg() {
             return dispatch(hideOpenProjectDlg());
+        },
+
+        saveOpenProjectLocal(data) {
+            return dispatch(saveOpenProjectLocal(data));
         }
     };
 }

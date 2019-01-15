@@ -8,6 +8,7 @@ export const OPEN_PROJECT_REQUEST_SUCCESS = 'OPEN_PROJECT_REQUEST_SUCCESS';
 export const OPEN_PROJECT_REQUEST_FAIL = 'OPEN_PROJECT_REQUEST_FAIL';
 
 export const OPEN_PROJECT_HIDE_DLG = 'OPEN_PROJECT_HIDE_DLG';
+export const OPEN_PROJECT_SAVE_LOCAL = 'OPEN_PROJECT_SAVE_LOCAL';
 
 export function startOpenProject() {
     return {
@@ -37,5 +38,11 @@ export function loadOpenProject() {
 export function hideOpenProjectDlg() {
     return {
         type: OPEN_PROJECT_HIDE_DLG
+    };
+}
+
+export function saveOpenProjectLocal() {
+    return {
+        type: OPEN_PROJECT_SAVE_LOCAL
     };
 }
