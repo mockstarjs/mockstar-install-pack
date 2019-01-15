@@ -8,7 +8,10 @@ export const OPEN_PROJECT_REQUEST_SUCCESS = 'OPEN_PROJECT_REQUEST_SUCCESS';
 export const OPEN_PROJECT_REQUEST_FAIL = 'OPEN_PROJECT_REQUEST_FAIL';
 
 export const OPEN_PROJECT_HIDE_DLG = 'OPEN_PROJECT_HIDE_DLG';
+
 export const OPEN_PROJECT_SAVE_LOCAL = 'OPEN_PROJECT_SAVE_LOCAL';
+export const OPEN_PROJECT_SAVE_LOCAL_SUCCESS = 'OPEN_PROJECT_SAVE_LOCAL_SUCCESS';
+export const OPEN_PROJECT_SAVE_LOCAL_FAIL = 'OPEN_PROJECT_SAVE_LOCAL_FAIL';
 
 export function startOpenProject() {
     return {
@@ -41,8 +44,20 @@ export function hideOpenProjectDlg() {
     };
 }
 
-export function saveOpenProjectLocal() {
+function fetchSaveOpenProject(data) {
     return {
-        type: OPEN_PROJECT_SAVE_LOCAL
+        [CALL_ELECTRON_REQUEST]: {
+            types: [OPEN_PROJECT_SAVE_LOCAL, OPEN_PROJECT_SAVE_LOCAL_SUCCESS, OPEN_PROJECT_SAVE_LOCAL_FAIL],
+            reqEvent: EVENT.SAVE_OPEN_PROJECT.REQ,
+            rspEvent: EVENT.SAVE_OPEN_PROJECT.RSP,
+            data: data,
+            _debug: require('../../../../business/mock/save-open-project-result')()
+        }
+    };
+}
+
+export function loadSaveOpenProject(data) {
+    return (dispatch) => {
+        return dispatch(fetchSaveOpenProject(data));
     };
 }

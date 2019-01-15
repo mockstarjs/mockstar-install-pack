@@ -4,6 +4,7 @@ import {
     OPEN_PROJECT_HIDE_DLG,
     OPEN_PROJECT_REQUEST_FAIL,
     OPEN_PROJECT_REQUEST_SUCCESS,
+    OPEN_PROJECT_SAVE_LOCAL_SUCCESS,
     OPEN_PROJECT_START
 } from './action';
 
@@ -45,6 +46,13 @@ export default function openProjectInfo(state = initialState, action) {
             break;
 
         case OPEN_PROJECT_HIDE_DLG:
+            update = {
+                showDlg: false,
+                errMsg: ''
+            };
+            break;
+
+        case OPEN_PROJECT_SAVE_LOCAL_SUCCESS:
             update = {
                 showDlg: false,
                 errMsg: ''

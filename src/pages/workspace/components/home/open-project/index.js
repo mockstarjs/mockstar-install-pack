@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import OpenForm from './open-form';
-import { hideOpenProjectDlg, saveOpenProjectLocal } from '../../../data/data-open-project';
+import { hideOpenProjectDlg, loadSaveOpenProject } from '../../../data/data-open-project';
 
 import './index.less';
 
@@ -22,7 +22,10 @@ class LoadProject extends Component {
                     console.log('Received values of step1 form: ', values);
                 }
 
-                this.props.saveOpenProjectLocal(values);
+                this.props.loadSaveOpenProject(values)
+                    .then((data) => {
+                        this.props.goProject(data.data.id);
+                    });
             }
         });
     };
@@ -67,8 +70,8 @@ function mapDispatchToProps(dispatch) {
             return dispatch(hideOpenProjectDlg());
         },
 
-        saveOpenProjectLocal(data) {
-            return dispatch(saveOpenProjectLocal(data));
+        loadSaveOpenProject(data) {
+            return dispatch(loadSaveOpenProject(data));
         }
     };
 }

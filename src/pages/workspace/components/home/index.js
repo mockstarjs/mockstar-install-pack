@@ -54,7 +54,7 @@ class PageWorkspaceHome extends Component {
 
                 <ProjectList goProject={this.handleGoProject} />
 
-                <OpenProject/>
+                <OpenProject goProject={this.handleGoProject}  />
             </div>
         );
     }
