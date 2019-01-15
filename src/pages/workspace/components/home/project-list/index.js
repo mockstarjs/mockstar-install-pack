@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Card, List } from 'antd';
-
-import { Ellipsis } from 'ant-design-pro';
+import { Button, Divider, Table } from 'antd';
 
 import './index.less';
 
@@ -23,30 +21,41 @@ class HomeProjectList extends Component {
     render() {
         const { isLoading, projects } = this.props;
 
+        const columns = [{
+            title: 'ID',
+            dataIndex: 'id',
+            key: 'id'
+        }, {
+            title: '名字',
+            dataIndex: 'name',
+            key: 'name'
+        }, {
+            title: '描述',
+            dataIndex: 'description',
+            key: 'description'
+        }, {
+            title: '预分配端口',
+            dataIndex: 'port',
+            key: 'port'
+        }, {
+            title: '操作',
+            key: 'action',
+            render: (text, record) => (
+                <span>
+                    <Button onClick={this.handleGoProjectPage.bind(this, record)}> 关闭/启动</Button>
+                    <Divider type="vertical" />
+                    <Button onClick={this.handleGoProjectPage.bind(this, record)}>编辑</Button>
+                </span>
+            )
+        }];
+
         return (
             <div className="page-home-project-list">
-                <List
+                <Table
                     rowKey="id"
                     loading={isLoading}
-                    grid={{ gutter: 24, lg: 3, md: 2, sm: 1, xs: 1 }}
+                    columns={columns}
                     dataSource={projects}
-                    renderItem={item =>
-                        <List.Item key={item.id}>
-                            <Card hoverable actions={[
-                                <a>关闭/启动</a>,
-                                <a onClick={this.handleGoProjectPage.bind(this, item)}>编辑</a>
-                            ]}>
-                                <Card.Meta
-                                    title={<a onClick={this.handleGoProjectPage.bind(this, item)}>{item.title}</a>}
-                                    description={
-                                        <Ellipsis lines={3}>
-                                            {item.description}
-                                        </Ellipsis>
-                                    }
-                                />
-                            </Card>
-                        </List.Item>
-                    }
                 />
             </div>
         );
