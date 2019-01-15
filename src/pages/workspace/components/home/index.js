@@ -6,6 +6,7 @@ import ProjectList from './project-list';
 
 import { loadLocalDBData } from '../../../../data/data-local-db';
 import { startCreateProject } from '../../data/data-create-project';
+import { loadOpenProject, startOpenProject } from '../../data/data-open-project';
 
 import './index.less';
 
@@ -24,6 +25,15 @@ class PageWorkspaceHome extends Component {
     };
 
     /**
+     * 打开本地 project
+     */
+    handleGoOpenProject = () => {
+        // 一定要重置状态
+        this.props.startOpenProject();
+        this.props.loadOpenProject();
+    };
+
+    /**
      * 进入到创建 project 的页面
      */
     handleGoCreateProject = () => {
@@ -36,7 +46,10 @@ class PageWorkspaceHome extends Component {
     render() {
         return (
             <div className="page-workspace-home">
-                <Header goCreateProject={this.handleGoCreateProject} />
+                <Header
+                    goOpenProject={this.handleGoOpenProject}
+                    goCreateProject={this.handleGoCreateProject}
+                />
 
                 <ProjectList goProject={this.handleGoProject} />
             </div>
@@ -60,6 +73,14 @@ function mapDispatchToProps(dispatch) {
 
         startCreateProject() {
             return dispatch(startCreateProject());
+        },
+
+        startOpenProject() {
+            return dispatch(startOpenProject());
+        },
+
+        loadOpenProject() {
+            return dispatch(loadOpenProject());
         }
     };
 }

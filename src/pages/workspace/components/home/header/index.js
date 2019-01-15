@@ -16,7 +16,7 @@ class PageWorkspaceHomeHeader extends Component {
     }
 
     handleOpenProject = () => {
-        message.info('打开项目');
+        this.props.goOpenProject();
     };
 
     handleCreateProject = () => {
