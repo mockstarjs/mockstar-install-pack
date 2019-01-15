@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Header from './header';
 import ProjectList from './project-list';
+import OpenProject from './open-project';
 
 import { loadLocalDBData } from '../../../../data/data-local-db';
 import { startCreateProject } from '../../data/data-create-project';
@@ -52,6 +53,8 @@ class PageWorkspaceHome extends Component {
                 />
 
                 <ProjectList goProject={this.handleGoProject} />
+
+                <OpenProject/>
             </div>
         );
     }

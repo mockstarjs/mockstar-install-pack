@@ -7,6 +7,8 @@ export const OPEN_PROJECT_REQUEST = 'OPEN_PROJECT_REQUEST';
 export const OPEN_PROJECT_REQUEST_SUCCESS = 'OPEN_PROJECT_REQUEST_SUCCESS';
 export const OPEN_PROJECT_REQUEST_FAIL = 'OPEN_PROJECT_REQUEST_FAIL';
 
+export const OPEN_PROJECT_HIDE_DLG = 'OPEN_PROJECT_HIDE_DLG';
+
 export function startOpenProject() {
     return {
         type: OPEN_PROJECT_START
@@ -27,6 +29,13 @@ function fetchOpenProject() {
 
 export function loadOpenProject() {
     return (dispatch) => {
+        // 如果是已经存在的项目，则直接进入到工作台，否则，弹出对话框补充一些基本信息
         return dispatch(fetchOpenProject());
+    };
+}
+
+export function hideOpenProjectDlg() {
+    return {
+        type: OPEN_PROJECT_HIDE_DLG
     };
 }

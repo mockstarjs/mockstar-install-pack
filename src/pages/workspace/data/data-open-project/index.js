@@ -2,7 +2,8 @@ import reducer from './reducer';
 
 export {
     loadOpenProject,
-    startOpenProject
+    startOpenProject,
+    hideOpenProjectDlg
 }from './action';
 
 export const openProjectInfo = reducer;
