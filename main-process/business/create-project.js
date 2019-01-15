@@ -32,7 +32,7 @@ ipcMain.on(EVENT.CREATE_PROJECT.REQ, (event, opts = {}) => {
             console.error(err);
             return {
                 retcode: -1,
-                errmsg: err
+                msg: err
             };
         })
         .then((data) => {

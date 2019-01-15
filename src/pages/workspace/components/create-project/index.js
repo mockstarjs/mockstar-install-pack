@@ -40,8 +40,8 @@ class WorkspaceCreateNewProject extends Component {
     };
 
     render() {
-        const { createMockerInfo } = this.props;
-        const { errMsg } = createMockerInfo;
+        const { createProjectInfo } = this.props;
+        const { errMsg } = createProjectInfo;
 
         return (
             <div className="page-workspace-project-create-mocker">
@@ -65,10 +65,10 @@ class WorkspaceCreateNewProject extends Component {
 }
 
 function mapStateToProps(state) {
-    const { createMockerInfo } = state;
+    const { createProjectInfo } = state;
 
     return {
-        createMockerInfo: createMockerInfo
+        createProjectInfo: createProjectInfo
     };
 }
 

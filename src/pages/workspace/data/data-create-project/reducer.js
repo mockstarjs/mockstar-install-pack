@@ -2,6 +2,7 @@ import _ from 'lodash';
 
 import {
     CREATE_PROJECT_GO_STEP1,
+    CREATE_PROJECT_SAVE_REQUEST_FAIL,
     CREATE_PROJECT_SAVE_REQUEST_SUCCESS,
     CREATE_PROJECT_SAVE_STEP1_SUCCESS,
     CREATE_PROJECT_START
@@ -58,6 +59,13 @@ export default function createProjectInfo(state = initialState, action) {
         case CREATE_PROJECT_SAVE_REQUEST_SUCCESS:
             update = {
                 curStep: 2
+            };
+            break;
+
+        case CREATE_PROJECT_SAVE_REQUEST_FAIL:
+            update = {
+                curStep: 1,
+                errMsg: data.msg
             };
             break;
 
