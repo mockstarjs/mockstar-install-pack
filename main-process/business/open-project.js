@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const { ipcMain, dialog } = require('electron');
 
+const db = require('../db');
+
 const { EVENT } = require('../../src/business/electron-main-render-common');
 
 /**
@@ -37,10 +39,15 @@ ipcMain.on(EVENT.OPEN_PROJECT.REQ, (event, opts) => {
             return;
         }
 
+        // 检查下当前项目是不是已经在缓存中了
+        const existProject = db.getProjectByPath(selectedDirectory);
+
         event.sender.send(EVENT.OPEN_PROJECT.RSP, {
             retcode: 0,
             result: {
-                selectedDirectory: selectedDirectory
+                selectedDirectory: selectedDirectory,
+                showDlg: !existProject,
+                existProject: existProject
             }
         }, opts);
     });

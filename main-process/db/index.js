@@ -16,6 +16,20 @@ function getProjectById(id) {
 }
 
 /**
+ * 通过 projectPath 获取指定的 project
+ *
+ * @param {String} projectPath 路径
+ * @return {*|null}
+ */
+function getProjectByPath(projectPath) {
+    const projects = getData().projects || [];
+
+    return projects.filter((item) => {
+        return item.basePath === projectPath;
+    })[0] || null;
+}
+
+/**
  * 保存项目
  *
  * @param {Object} data
@@ -47,6 +61,7 @@ function saveProject(data = {}, callback) {
 
 module.exports = {
     getProjectById,
+    getProjectByPath,
     saveProject,
     saveData,
     getData
