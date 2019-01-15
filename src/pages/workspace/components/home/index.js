@@ -7,7 +7,7 @@ import OpenProject from './open-project';
 
 import { loadLocalDBData } from '../../../../data/data-local-db';
 import { startCreateProject } from '../../data/data-create-project';
-import { loadOpenProject, startOpenProject } from '../../data/data-open-project';
+import { loadOpenProject, loadRemoveOpenProject, startOpenProject } from '../../data/data-open-project';
 
 import './index.less';
 
@@ -35,6 +35,17 @@ class PageWorkspaceHome extends Component {
     };
 
     /**
+     * 移除列表中的 project
+     */
+    handleRemoveProject = (id) => {
+        // 列表中移除
+        this.props.loadRemoveOpenProject(id);
+
+        // 刷新列表
+        this.props.loadLocalDBData();
+    };
+
+    /**
      * 进入到创建 project 的页面
      */
     handleGoCreateProject = () => {
@@ -55,7 +66,10 @@ class PageWorkspaceHome extends Component {
                 <OpenProject goProject={this.handleGoProject} />
 
 
-                <ProjectList goProject={this.handleGoProject} />
+                <ProjectList
+                    goProject={this.handleGoProject}
+                    removeProject={this.handleRemoveProject}
+                />
 
             </div>
         );
@@ -86,6 +100,10 @@ function mapDispatchToProps(dispatch) {
 
         loadOpenProject() {
             return dispatch(loadOpenProject());
+        },
+
+        loadRemoveOpenProject(id) {
+            return dispatch(loadRemoveOpenProject(id));
         }
     };
 }

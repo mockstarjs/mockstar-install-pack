@@ -37,13 +37,12 @@ class HomeProjectList extends Component {
 
                 </div>
             ),
-            onOk() {
-                console.log('--onOk--');
-            },
-            onCancel() {
-                console.log('--onCancel--');
-            }
+            onOk: this.handleRemoveProjectConfirm.bind(this, item.id)
         });
+    };
+
+    handleRemoveProjectConfirm = (id) => {
+        this.props.removeProject(id);
     };
 
     render() {

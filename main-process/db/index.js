@@ -59,12 +59,36 @@ function saveProject(data = {}, callback) {
     }
 }
 
+/**
+ * 通过 id 获取指定的 project
+ *
+ * @param {Number | String} id 项目ID
+ * @return {*|null}
+ */
+function removeProjectById(id) {
+    const requestId = parseInt(id, 10);
+    const cacheData = getData();
+    const projects = cacheData.projects || [];
+
+    // 过滤
+    const newProjects = projects.filter((item) => {
+        return item.id !== requestId;
+    });
+
+    // 更新项目列表
+    cacheData.projects = newProjects;
+
+    // 保存
+    saveData(cacheData);
+}
+
 module.exports = {
     getProjectById,
     getProjectByPath,
     saveProject,
     saveData,
-    getData
+    getData,
+    removeProjectById
 };
 
 // const path = require('path')
