@@ -27,6 +27,10 @@ const EVENT = {
         REQ: 'req-save-open-project',
         RSP: 'rsp-save-open-project'
     },
+    REMOVE_OPEN_PROJECT: {
+        REQ: 'req-remove-open-project',
+        RSP: 'rsp-remove-open-project'
+    },
     OPEN_PROJECT: {
         REQ: 'req-open-project',
         RSP: 'rsp-open-project'

@@ -4,7 +4,8 @@ export {
     loadOpenProject,
     startOpenProject,
     hideOpenProjectDlg,
-    loadSaveOpenProject
+    loadSaveOpenProject,
+    loadRemoveOpenProject
 }from './action';
 
 export const openProjectInfo = reducer;

@@ -13,6 +13,10 @@ export const OPEN_PROJECT_SAVE_LOCAL = 'OPEN_PROJECT_SAVE_LOCAL';
 export const OPEN_PROJECT_SAVE_LOCAL_SUCCESS = 'OPEN_PROJECT_SAVE_LOCAL_SUCCESS';
 export const OPEN_PROJECT_SAVE_LOCAL_FAIL = 'OPEN_PROJECT_SAVE_LOCAL_FAIL';
 
+export const OPEN_PROJECT_REMOVE_LOCAL = 'OPEN_PROJECT_REMOVE_LOCAL';
+export const OPEN_PROJECT_REMOVE_LOCAL_SUCCESS = 'OPEN_PROJECT_REMOVE_LOCAL_SUCCESS';
+export const OPEN_PROJECT_REMOVE_LOCAL_FAIL = 'OPEN_PROJECT_REMOVE_LOCAL_FAIL';
+
 export function startOpenProject() {
     return {
         type: OPEN_PROJECT_START
@@ -59,5 +63,23 @@ function fetchSaveOpenProject(data) {
 export function loadSaveOpenProject(data) {
     return (dispatch) => {
         return dispatch(fetchSaveOpenProject(data));
+    };
+}
+
+function fetchRemoveOpenProject(id) {
+    return {
+        [CALL_ELECTRON_REQUEST]: {
+            types: [OPEN_PROJECT_REMOVE_LOCAL, OPEN_PROJECT_REMOVE_LOCAL_SUCCESS, OPEN_PROJECT_REMOVE_LOCAL_FAIL],
+            reqEvent: EVENT.REMOVE_OPEN_PROJECT.REQ,
+            rspEvent: EVENT.REMOVE_OPEN_PROJECT.RSP,
+            data: { id },
+            _debug: require('../../../../business/mock/remove-open-project-result')()
+        }
+    };
+}
+
+export function loadRemoveOpenProject(id) {
+    return (dispatch) => {
+        return dispatch(fetchRemoveOpenProject(id));
     };
 }

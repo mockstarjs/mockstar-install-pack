@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Button, Divider, Table } from 'antd';
+import { Button, Divider, Modal, Table } from 'antd';
 
 import './index.less';
 
@@ -16,6 +16,34 @@ class HomeProjectList extends Component {
 
     handleGoProjectPage = (item) => {
         this.props.goProject(item.id);
+    };
+
+    handleRemoveProject = (item) => {
+        console.log('--handleRemoveProject--', item);
+
+        Modal.confirm({
+            content: (
+                <div>
+                    <h2>确定要移除该项目么？</h2>
+
+                    <dl>
+                        <dt>描述</dt>
+                        <dd>{item.description}</dd>
+                    </dl>
+                    <dl>
+                        <dt>路径</dt>
+                        <dd>{item.basePath}</dd>
+                    </dl>
+
+                </div>
+            ),
+            onOk() {
+                console.log('--onOk--');
+            },
+            onCancel() {
+                console.log('--onCancel--');
+            }
+        });
     };
 
     render() {
@@ -45,6 +73,8 @@ class HomeProjectList extends Component {
                     <Button onClick={this.handleGoProjectPage.bind(this, record)}> 关闭/启动</Button>
                     <Divider type="vertical" />
                     <Button onClick={this.handleGoProjectPage.bind(this, record)}>编辑</Button>
+                    <Divider type="vertical" />
+                    <Button type="danger" onClick={this.handleRemoveProject.bind(this, record)}>移除</Button>
                 </span>
             )
         }];
