@@ -7,7 +7,12 @@ import OpenProject from './open-project';
 
 import { loadLocalDBData } from '../../../../data/data-local-db';
 import { startCreateProject } from '../../data/data-create-project';
-import { loadOpenProject, loadRemoveOpenProject, startOpenProject } from '../../data/data-open-project';
+import {
+    loadOpenProject,
+    loadRemoveOpenProject,
+    loadStartProject,
+    startOpenProject
+} from '../../data/data-open-project';
 
 import './index.less';
 
@@ -55,6 +60,13 @@ class PageWorkspaceHome extends Component {
         this.props.startCreateProject();
     };
 
+    /**
+     * 启动项目
+     */
+    handleStartProject = (id) => {
+        this.props.loadStartProject(id);
+    };
+
     render() {
         return (
             <div className="page-workspace-home">
@@ -69,6 +81,7 @@ class PageWorkspaceHome extends Component {
                 <ProjectList
                     goProject={this.handleGoProject}
                     removeProject={this.handleRemoveProject}
+                    startProject={this.handleStartProject}
                 />
 
             </div>
@@ -104,6 +117,10 @@ function mapDispatchToProps(dispatch) {
 
         loadRemoveOpenProject(id) {
             return dispatch(loadRemoveOpenProject(id));
+        },
+
+        loadStartProject(id) {
+            return dispatch(loadStartProject(id));
         }
     };
 }

@@ -18,6 +18,10 @@ class HomeProjectList extends Component {
         this.props.goProject(item.id);
     };
 
+    handleStartProject = (item) => {
+        this.props.startProject(item.id);
+    };
+
     handleRemoveProject = (item) => {
         console.log('--handleRemoveProject--', item);
 
@@ -69,7 +73,7 @@ class HomeProjectList extends Component {
             key: 'action',
             render: (text, record) => (
                 <span>
-                    <Button onClick={this.handleGoProjectPage.bind(this, record)}> 关闭/启动</Button>
+                    <Button onClick={this.handleStartProject.bind(this, record)}> 关闭/启动</Button>
                     <Divider type="vertical" />
                     <Button onClick={this.handleGoProjectPage.bind(this, record)}>编辑</Button>
                     <Divider type="vertical" />

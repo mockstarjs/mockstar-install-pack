@@ -35,6 +35,10 @@ const EVENT = {
         REQ: 'req-open-project',
         RSP: 'rsp-open-project'
     },
+    MOCKSTAR_START: {
+        REQ: 'req-mockstar-start',
+        RSP: 'rsp-mockstar-start'
+    },
     CREATE_MOCKER: {
         REQ: 'req-create-mocker',
         RSP: 'rsp-create-mocker'

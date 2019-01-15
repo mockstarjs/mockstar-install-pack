@@ -17,6 +17,10 @@ export const OPEN_PROJECT_REMOVE_LOCAL = 'OPEN_PROJECT_REMOVE_LOCAL';
 export const OPEN_PROJECT_REMOVE_LOCAL_SUCCESS = 'OPEN_PROJECT_REMOVE_LOCAL_SUCCESS';
 export const OPEN_PROJECT_REMOVE_LOCAL_FAIL = 'OPEN_PROJECT_REMOVE_LOCAL_FAIL';
 
+export const MOCKSTAR_START_REQUEST = 'MOCKSTAR_START_REQUEST';
+export const MOCKSTAR_START_REQUEST_SUCCESS = 'MOCKSTAR_START_REQUEST_SUCCESS';
+export const MOCKSTAR_START_REQUEST_FAIL = 'MOCKSTAR_START_REQUEST_FAIL';
+
 export function startOpenProject() {
     return {
         type: OPEN_PROJECT_START
@@ -81,5 +85,23 @@ function fetchRemoveOpenProject(id) {
 export function loadRemoveOpenProject(id) {
     return (dispatch) => {
         return dispatch(fetchRemoveOpenProject(id));
+    };
+}
+
+function fetchStartProject(id) {
+    return {
+        [CALL_ELECTRON_REQUEST]: {
+            types: [MOCKSTAR_START_REQUEST, MOCKSTAR_START_REQUEST_SUCCESS, MOCKSTAR_START_REQUEST_FAIL],
+            reqEvent: EVENT.MOCKSTAR_START.REQ,
+            rspEvent: EVENT.MOCKSTAR_START.RSP,
+            data: { id },
+            _debug: require('../../../../business/mock/mockstart-start-result')()
+        }
+    };
+}
+
+export function loadStartProject(id) {
+    return (dispatch) => {
+        return dispatch(fetchStartProject(id));
     };
 }
