@@ -9,7 +9,7 @@ import {
 
 const initialState = {
     // 父级目录
-    parentPath: '/Users/helinjiang/gitprojects/now-h5-shake-redpacket',
+    parentPath: '/Users/helinjiang/gitprojects/mockstar-install-pack/tmp',
 
     // 当前第几步
     curStep: 0,
@@ -18,7 +18,7 @@ const initialState = {
     name: 'mockstar-app',
 
     // 项目中文名称
-    description: 'now-h5-shake-redpacket',
+    description: 'mockstar 的样例项目',
 
     // 指定端口号，1024-65535
     port: 9527,

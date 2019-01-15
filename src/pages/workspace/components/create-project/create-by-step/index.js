@@ -7,7 +7,7 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 
-import { goStep1, goStep2, loadCreateProject, saveStep1, saveStep2 } from '../../../data/data-create-project';
+import { goStep1, loadCreateProject, saveStep1 } from '../../../data/data-create-project';
 
 import './index.less';
 
@@ -84,14 +84,6 @@ function mapDispatchToProps(dispatch) {
 
         goStep1() {
             return dispatch(goStep1());
-        },
-
-        saveStep2(data) {
-            return dispatch(saveStep2(data));
-        },
-
-        goStep2() {
-            return dispatch(goStep2());
         },
 
         loadCreateProject(data) {
