@@ -11,7 +11,7 @@ import './index.less';
 
 class PageWorkspaceHome extends Component {
     componentDidMount() {
-        console.log('---2--', this.props.match, this.props.history);
+        // console.log('---2--', this.props.match, this.props.history);
     }
 
     /**

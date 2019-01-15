@@ -22,8 +22,7 @@ class LayoutHeader extends Component {
         // console.log('---handleIsActive---', curMenu);
 
         const map = {
-            ['/']: 'home',
-            [`/home`]: 'home',
+            ['/']: 'workspace',
             [`/workspace`]: 'workspace'
         };
 
@@ -50,10 +49,6 @@ class LayoutHeader extends Component {
                     selectedKeys={[activeMenu]}
                     style={{ lineHeight: '64px' }}
                 >
-                    <Menu.Item key="home">
-                        <NavLink to={`/home`} isActive={this.handleIsActive}>首页</NavLink>
-                    </Menu.Item>
-
                     <Menu.Item key="workspace">
                         <NavLink to={`/workspace`} isActive={this.handleIsActive}>工作台</NavLink>
                     </Menu.Item>
