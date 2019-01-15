@@ -1,24 +1,27 @@
 const projects = [{
     id: 1,
-    title: '摇一摇红包',
+    name: '摇一摇红包',
     description: '摇一摇红包 description',
     port: 9527,
     basePath: '/Users/helinjiang/gitprojects/now-h5-shake-redpacket/mockstar-app'
 }, {
     id: 2,
-    title: 'title2',
+    name: 'name2',
     description: 'description2',
-    port: 9528
+    port: 9528,
+    basePath: '/Users/name2/mockstar-app'
 }, {
     id: 3,
-    title: 'title3',
+    name: 'name3',
     description: 'description3',
-    port: 9529
+    port: 9529,
+    basePath: '/Users/name3/mockstar-app'
 }, {
     id: 4,
-    title: 'title4',
+    name: 'name4',
     description: 'description4',
-    port: 9530
+    port: 9530,
+    basePath: '/Users/name4/mockstar-app'
 }];
 
 const info = {

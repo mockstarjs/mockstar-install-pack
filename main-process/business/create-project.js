@@ -3,6 +3,8 @@ const { ipcMain, dialog } = require('electron');
 const fse = require('fs-extra');
 const { initProject } = require('mockstar-generators');
 
+const db = require('../db');
+
 const { EVENT } = require('../../src/business/electron-main-render-common');
 
 /**
@@ -25,6 +27,14 @@ ipcMain.on(EVENT.CREATE_PROJECT.REQ, (event, opts = {}) => {
             fse.outputJsonSync(path.join(__dirname, '../../tmp/create-project.json'), {
                 retcode: 0,
                 result: opts
+            });
+
+            // 存储一份到本地缓存
+            db.saveProject({
+                name: opts.name,
+                description: opts.description,
+                port: opts.port,
+                basePath: path.join(opts.parentPath, opts.name)
             });
 
             return {
