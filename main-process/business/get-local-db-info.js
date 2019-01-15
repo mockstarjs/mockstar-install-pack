@@ -1,5 +1,6 @@
-const path = require('path');
-const { ipcMain, dialog } = require('electron');
+const { ipcMain } = require('electron');
+
+const db = require('../db');
 
 const { EVENT } = require('../../src/business/electron-main-render-common');
 
@@ -10,10 +11,8 @@ const { EVENT } = require('../../src/business/electron-main-render-common');
  * @param {Object} [opts] 额外的参数，用于处理某些逻辑
  */
 ipcMain.on(EVENT.LOCAL_DB_INFO.REQ, (event, opts) => {
-    const data = require(path.join(__dirname, '../../src/business/mock/database'));
-
     event.sender.send(EVENT.LOCAL_DB_INFO.RSP, {
         retcode: 0,
-        result: data
+        result: db.getData()
     }, opts);
 });

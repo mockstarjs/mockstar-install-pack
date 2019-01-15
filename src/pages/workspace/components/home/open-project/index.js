@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 import ShowErrorTips from '../../../../../components/show-error-tips';
 import OpenForm from './open-form';
+
 import { hideOpenProjectDlg, loadSaveOpenProject } from '../../../data/data-open-project';
+import { loadLocalDBData } from '../../../../../data/data-local-db';
 
 import './index.less';
 
@@ -23,9 +25,13 @@ class OpenProject extends Component {
                     basePath: this.props.selectedDirectory
                 }, values);
 
-                // 首先保存，保存成功之后自动跳转
+                // 首先保存，刷新列表，然后自动跳转
                 this.props.loadSaveOpenProject(opts)
                     .then((data) => {
+                        // 刷新列表
+                        this.props.loadLocalDBData();
+
+                        // 跳转到工作台
                         this.props.goProject(data.data.id);
                     });
             }
@@ -63,12 +69,16 @@ function mapStateToProps(state) {
     return {
         selectedDirectory: openProjectInfo.selectedDirectory,
         showDlg: openProjectInfo.showDlg,
-        errMsg: openProjectInfo.errMsg,
+        errMsg: openProjectInfo.errMsg
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
+        loadLocalDBData() {
+            return dispatch(loadLocalDBData());
+        },
+
         hideOpenProjectDlg() {
             return dispatch(hideOpenProjectDlg());
         },
