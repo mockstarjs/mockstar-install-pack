@@ -52,9 +52,11 @@ class PageWorkspaceHome extends Component {
                     goCreateProject={this.handleGoCreateProject}
                 />
 
+                <OpenProject goProject={this.handleGoProject} />
+
+
                 <ProjectList goProject={this.handleGoProject} />
 
-                <OpenProject goProject={this.handleGoProject}  />
             </div>
         );
     }

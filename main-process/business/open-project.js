@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const { ipcMain, dialog } = require('electron');
 
 const { EVENT } = require('../../src/business/electron-main-render-common');
@@ -18,6 +20,7 @@ ipcMain.on(EVENT.OPEN_PROJECT.REQ, (event, opts) => {
                 retcode: -1,
                 msg: '没有选择目录！'
             }, opts);
+
             return;
         }
 
@@ -25,6 +28,14 @@ ipcMain.on(EVENT.OPEN_PROJECT.REQ, (event, opts) => {
         const selectedDirectory = files[0];
 
         // 注意，选择的文件目录不一定是 mockstar 项目
+        if (!fs.existsSync(path.join(selectedDirectory, 'mockstar.config.js'))) {
+            event.sender.send(EVENT.OPEN_PROJECT.RSP, {
+                retcode: -2,
+                msg: '当前选择的项目不是 mockstar 项目！'
+            }, opts);
+
+            return;
+        }
 
         event.sender.send(EVENT.OPEN_PROJECT.RSP, {
             retcode: 0,

@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import ShowErrorTips from '../../../../../components/show-error-tips';
 import OpenForm from './open-form';
 import { hideOpenProjectDlg, loadSaveOpenProject } from '../../../data/data-open-project';
 
 import './index.less';
 
-class LoadProject extends Component {
-    constructor(props, context) {
-        super(props, context);
-    }
-
+class OpenProject extends Component {
     openFormRef = (form) => {
         this.form = form;
     };
@@ -41,11 +38,11 @@ class LoadProject extends Component {
 
     render() {
 
-        const { selectedDirectory, showDlg } = this.props;
+        const { selectedDirectory, showDlg, errMsg } = this.props;
 
         return (
-            <div className="load-project">
-                <div>{selectedDirectory}</div>
+            <div className="page-workspace-home-open-project">
+                <ShowErrorTips message={errMsg} />
 
                 <OpenForm
                     ref={this.openFormRef}
@@ -65,7 +62,8 @@ function mapStateToProps(state) {
 
     return {
         selectedDirectory: openProjectInfo.selectedDirectory,
-        showDlg: openProjectInfo.showDlg
+        showDlg: openProjectInfo.showDlg,
+        errMsg: openProjectInfo.errMsg,
     };
 }
 
@@ -81,4 +79,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoadProject);
+export default connect(mapStateToProps, mapDispatchToProps)(OpenProject);
