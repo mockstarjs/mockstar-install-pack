@@ -19,8 +19,9 @@ function getProjectById(id) {
  * 保存项目
  *
  * @param {Object} data
+ * @param {Function} [callback]
  */
-function saveProject(data = {}) {
+function saveProject(data = {}, callback) {
     const cacheData = getData();
     const projects = cacheData.projects || [];
 
@@ -37,6 +38,11 @@ function saveProject(data = {}) {
 
     // 保存
     saveData(cacheData);
+
+    // 回调
+    if (typeof callback === 'function') {
+        callback(data);
+    }
 }
 
 module.exports = {

@@ -22,7 +22,12 @@ class LoadProject extends Component {
                     console.log('Received values of step1 form: ', values);
                 }
 
-                this.props.loadSaveOpenProject(values)
+                const opts = Object.assign({
+                    basePath: this.props.selectedDirectory
+                }, values);
+
+                // 首先保存，保存成功之后自动跳转
+                this.props.loadSaveOpenProject(opts)
                     .then((data) => {
                         this.props.goProject(data.data.id);
                     });
