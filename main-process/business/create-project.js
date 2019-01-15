@@ -22,10 +22,14 @@ ipcMain.on(EVENT.CREATE_PROJECT.REQ, (event, opts = {}) => {
         .then((data) => {
             // console.log(data);
             // TODO 临时测试
-            fse.outputJsonSync(path.join(__dirname, '../../tmp/create-project.json'), opts);
+            fse.outputJsonSync(path.join(__dirname, '../../tmp/create-project.json'), {
+                retcode: 0,
+                result: opts
+            });
 
             return {
-                retcode: 0
+                retcode: 0,
+                result: opts
             };
         })
         .catch((err) => {
