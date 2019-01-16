@@ -23,7 +23,8 @@ class LayoutHeader extends Component {
 
         const map = {
             ['/']: 'workspace',
-            [`/workspace`]: 'workspace'
+            [`/workspace`]: 'workspace',
+            [`/only-test`]: 'only-test',
         };
 
         let newMenuId = map[curMenu.url];

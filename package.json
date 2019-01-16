@@ -9,6 +9,7 @@
     "build": "react-app-rewired build",
     "electron-start": "electron .",
     "electron-start-dev": "electron . --debug",
+    "electron-start-dev-proxy": "electron . --debug --proxy-server=127.0.0.1:8080",
     "electron-start-dev2": "./node_modules/electron/cli.js -v"
   },
   "repository": {
