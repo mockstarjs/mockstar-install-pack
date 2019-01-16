@@ -44,6 +44,7 @@ export default class TestLottie extends Component {
         checkT = setInterval(() => {
             if (i > 10) {
                 clearInterval(checkT);
+                return;
             }
 
             i++;
