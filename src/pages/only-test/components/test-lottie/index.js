@@ -29,23 +29,28 @@ export default class TestLottie extends Component {
     }
 
     handleClick = () => {
-        this.getData('https://www.qq.com', false)
-            .then((data) => {
-                console.log('========', data);
-                data.index = this.state.list.length;
-
-                this.setState({
-                    list: [...this.state.list, data]
-                });
-            })
-            .catch((err) => {
-                console.error(err);
-            });
+        this.requestOnce();
     };
 
     handleClickMulti = () => {
-        this.requestOnce();
+
+        this.tryManyTimes();
     };
+
+    tryManyTimes() {
+        let i = 0;
+        let checkT;
+
+        checkT = setInterval(() => {
+            if (i > 10) {
+                clearInterval(checkT);
+            }
+
+            i++;
+
+            this.requestOnce();
+        });
+    }
 
     requestOnce() {
         this.getData('http://now.qq.com/demo/lottie/index.html?now_n_http=1&blob=1', false)
@@ -148,6 +153,13 @@ export default class TestLottie extends Component {
             title: 'responseEnd',
             dataIndex: 'responseEnd',
             key: 'responseEnd'
+        }, {
+            title: 'cost',
+            dataIndex: 'cost',
+            key: 'cost',
+            render: (text, record) => (
+                <span>{record.responseEnd - record.requestStart}</span>
+            )
         }];
 
         return (
