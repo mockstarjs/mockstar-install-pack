@@ -23,6 +23,10 @@ class PageWorkspaceProjectHeader extends Component {
         message.info('关闭');
     };
 
+    handleBackToHome = () => {
+        this.props.goHome();
+    };
+
     handleCreateMocker = () => {
         this.props.goCreateMocker();
     };
@@ -38,13 +42,15 @@ class PageWorkspaceProjectHeader extends Component {
             <div className="header-content-wrapper">
                 <p>{currentProjectInfo.description}</p>
                 <div className="action-wrapper">
-                    {
-                        isRunning ? (
-                            <Button type="primary" icon="stop" onClick={this.handleStop}>关闭</Button>
-                        ) : (
-                            <Button type="primary" icon="check-circle" onClick={this.handleStart}>启动</Button>
-                        )
-                    }
+                    {/*{*/}
+                    {/*isRunning ? (*/}
+                    {/*<Button type="primary" icon="stop" onClick={this.handleStop}>关闭</Button>*/}
+                    {/*) : (*/}
+                    {/*<Button type="primary" icon="check-circle" onClick={this.handleStart}>启动</Button>*/}
+                    {/*)*/}
+                    {/*}*/}
+                    <Button icon="left" onClick={this.handleBackToHome}>返回</Button>
+
                     <Button type="primary" icon="plus" onClick={this.handleCreateMocker}>新增桩对象</Button>
                     <Button icon="setting" onClick={this.handleConfig}>配置</Button>
                 </div>

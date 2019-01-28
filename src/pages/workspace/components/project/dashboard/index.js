@@ -23,12 +23,19 @@ class PageWorkspaceProjectDashboad extends Component {
         this.props.startCreateMocker();
     };
 
+    handleGoHome = () => {
+        this.props.history.push(`/workspace`);
+    };
+
     render() {
         const { isRunning } = this.props;
 
         return (
             <div className="page-workspace-project-dashboard">
-                <Header goCreateMocker={this.handleGoCreateMocker}/>
+                <Header
+                    goCreateMocker={this.handleGoCreateMocker}
+                    goHome={this.handleGoHome}
+                />
 
                 {
                     isRunning ? (
