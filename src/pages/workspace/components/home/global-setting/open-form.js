@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Form, Input, Modal } from 'antd';
+import { Form, Modal, Select } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -37,7 +37,13 @@ class OpenForm extends Component {
                                     required: true
                                 }
                             ]
-                        })(<Input />)}
+                        })(
+                            <Select>
+                                <Select.Option value="npm">npm</Select.Option>
+                                <Select.Option value="tnpm">tnpm</Select.Option>
+                                <Select.Option value="cnpm">cnpm</Select.Option>
+                            </Select>
+                        )}
                     </FormItem>
                 </Form>
             </Modal>
