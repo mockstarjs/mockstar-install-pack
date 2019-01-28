@@ -11,6 +11,10 @@ export const CREATE_PROJECT_SAVE_REQUEST = 'CREATE_PROJECT_SAVE_REQUEST';
 export const CREATE_PROJECT_SAVE_REQUEST_SUCCESS = 'CREATE_PROJECT_SAVE_REQUEST_SUCCESS';
 export const CREATE_PROJECT_SAVE_REQUEST_FAIL = 'CREATE_PROJECT_SAVE_REQUEST_FAIL';
 
+export const CREATE_PROJECT_SELECT_ROOT_REQUEST = 'CREATE_PROJECT_SELECT_ROOT_REQUEST';
+export const CREATE_PROJECT_SELECT_ROOT_REQUEST_SUCCESS = 'CREATE_PROJECT_SELECT_ROOT_REQUEST_SUCCESS';
+export const CREATE_PROJECT_SELECT_ROOT_REQUEST_FAIL = 'CREATE_PROJECT_SELECT_ROOT_REQUEST_FAIL';
+
 export function startCreateProject() {
     return {
         type: CREATE_PROJECT_START
@@ -45,5 +49,23 @@ function fetchCreateProject(data) {
 export function loadCreateProject(data) {
     return (dispatch) => {
         return dispatch(fetchCreateProject(data));
+    };
+}
+
+function fetchCreateProjectRootFolder() {
+    return {
+        [CALL_ELECTRON_REQUEST]: {
+            types: [CREATE_PROJECT_SELECT_ROOT_REQUEST, CREATE_PROJECT_SELECT_ROOT_REQUEST_SUCCESS, CREATE_PROJECT_SELECT_ROOT_REQUEST_FAIL],
+            reqEvent: EVENT.CREATE_PROJECT_SELECT_ROOT.REQ,
+            rspEvent: EVENT.CREATE_PROJECT_SELECT_ROOT.RSP,
+            data: {},
+            _debug: require('../../../../business/mock/create-project-select-root-result')()
+        }
+    };
+}
+
+export function loadCreateProjectRootFolder() {
+    return (dispatch) => {
+        return dispatch(fetchCreateProjectRootFolder());
     };
 }

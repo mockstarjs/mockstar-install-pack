@@ -5,12 +5,13 @@ import {
     CREATE_PROJECT_SAVE_REQUEST_FAIL,
     CREATE_PROJECT_SAVE_REQUEST_SUCCESS,
     CREATE_PROJECT_SAVE_STEP1_SUCCESS,
+    CREATE_PROJECT_SELECT_ROOT_REQUEST_SUCCESS,
     CREATE_PROJECT_START
 } from './action';
 
 const initialState = {
     // 父级目录
-    parentPath: '/Users/helinjiang/gitprojects/mockstar-install-pack/tmp',
+    parentPath: '',
 
     // 当前第几步
     curStep: 0,
@@ -19,7 +20,7 @@ const initialState = {
     name: 'mockstar-app',
 
     // 项目中文名称
-    description: 'mockstar 的样例项目',
+    description: '',
 
     // 指定端口号，1024-65535
     port: 9527,
@@ -70,6 +71,11 @@ export default function createProjectInfo(state = initialState, action) {
             };
             break;
 
+        case CREATE_PROJECT_SELECT_ROOT_REQUEST_SUCCESS:
+            update = {
+                parentPath: data.selectedDirectory
+            };
+            break;
         default:
             break;
     }

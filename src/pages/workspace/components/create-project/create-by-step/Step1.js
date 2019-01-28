@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import { Button, Divider, Form, Input, InputNumber, Select } from 'antd';
+import { Button, Col, Divider, Form, Input, InputNumber, Row } from 'antd';
 import { formItemLayout } from './layout-config';
 
 const FormItem = Form.Item;
@@ -23,7 +23,7 @@ class CreateStep1 extends Component {
     };
 
     render() {
-        const { form, createProjectInfo } = this.props;
+        const { form, createProjectInfo, loadCreateProjectRootFolder } = this.props;
         const { getFieldDecorator } = form;
 
         return (
@@ -32,15 +32,23 @@ class CreateStep1 extends Component {
                     <FormItem
                         {...formItemLayout}
                         label="项目的父级路径"
+                        help="请点击按钮选择路径，新创建的项目即在该路径下"
                     >
-                        {getFieldDecorator('parentPath', {
-                            initialValue: createProjectInfo.parentPath,
-                            rules: [
-                                {
-                                    required: true
-                                }
-                            ]
-                        })(<Input/>)}
+                        <Row type="flex">
+                            <Col span={4}>
+                                <Button type="primary" block onClick={loadCreateProjectRootFolder}>选择路径</Button>
+                            </Col>
+                            <Col span={20}>
+                                {getFieldDecorator('parentPath', {
+                                    initialValue: createProjectInfo.parentPath,
+                                    rules: [
+                                        {
+                                            required: true
+                                        }
+                                    ]
+                                })(<Input readOnly />)}
+                            </Col>
+                        </Row>
                     </FormItem>
 
                     <FormItem
@@ -61,6 +69,7 @@ class CreateStep1 extends Component {
                     <FormItem
                         {...formItemLayout}
                         label="一句话描述"
+                        help="描述信息能够帮助快速区分项目"
                     >
                         {getFieldDecorator('description', {
                             initialValue: createProjectInfo.description,
@@ -78,7 +87,7 @@ class CreateStep1 extends Component {
                         help="端口号可配置区间1024-65535，默认值 9527"
                     >
                         {getFieldDecorator('port', {
-                            initialValue: createProjectInfo.port,
+                            initialValue: createProjectInfo.port
                         })(<InputNumber min={1024} max={65535} />)}
                     </FormItem>
 

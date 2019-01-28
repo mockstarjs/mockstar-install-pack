@@ -7,7 +7,7 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 
-import { goStep1, loadCreateProject, saveStep1 } from '../../../data/data-create-project';
+import { goStep1, loadCreateProject, loadCreateProjectRootFolder, saveStep1 } from '../../../data/data-create-project';
 
 import './index.less';
 
@@ -20,7 +20,8 @@ class CreateByStep extends Component {
             saveStep1,
             goStep1,
             goHome,
-            goCreateProject
+            goCreateProject,
+            loadCreateProjectRootFolder
         } = this.props;
 
         const { curStep } = createProjectInfo;
@@ -39,6 +40,7 @@ class CreateByStep extends Component {
                         <Step1
                             createProjectInfo={createProjectInfo}
                             parentPath={parentPath}
+                            loadCreateProjectRootFolder={loadCreateProjectRootFolder}
                             onSubmit={saveStep1}
                         />
                     ) : null
@@ -88,6 +90,10 @@ function mapDispatchToProps(dispatch) {
 
         loadCreateProject(data) {
             return dispatch(loadCreateProject(data));
+        },
+
+        loadCreateProjectRootFolder() {
+            return dispatch(loadCreateProjectRootFolder());
         }
     };
 }

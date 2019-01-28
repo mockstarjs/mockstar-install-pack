@@ -23,6 +23,10 @@ const EVENT = {
         REQ: 'req-create-project',
         RSP: 'rsp-create-project'
     },
+    CREATE_PROJECT_SELECT_ROOT: {
+        REQ: 'req-create-project-select-root',
+        RSP: 'rsp-create-project-select-root'
+    },
     SAVE_OPEN_PROJECT: {
         REQ: 'req-save-open-project',
         RSP: 'rsp-save-open-project'

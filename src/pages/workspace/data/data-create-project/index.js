@@ -4,7 +4,8 @@ export {
     saveStep1,
     goStep1,
     loadCreateProject,
-    startCreateProject
+    startCreateProject,
+    loadCreateProjectRootFolder
 }from './action';
 
 export const createProjectInfo = reducer;
