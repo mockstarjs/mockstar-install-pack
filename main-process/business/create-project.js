@@ -17,6 +17,7 @@ ipcMain.on(EVENT.CREATE_PROJECT.REQ, (event, opts = {}) => {
     // 初始化
     initProject({
         isDev: false,
+        autoInstall: true,
         parentPath: opts.parentPath,
         name: opts.name,
         port: opts.port
