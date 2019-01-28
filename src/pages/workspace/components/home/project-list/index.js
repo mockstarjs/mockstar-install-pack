@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Button, Divider, Modal, Table } from 'antd';
+import { Button, Divider, Modal, Popover, Table } from 'antd';
 
 import './index.less';
 
@@ -61,17 +61,31 @@ class HomeProjectList extends Component {
             dataIndex: 'id',
             key: 'id'
         }, {
-            title: '名字',
-            dataIndex: 'name',
-            key: 'name'
+            title: '项目',
+            key: 'description',
+            render: (text, record) => {
+                const tc = (
+                    <div>{JSON.stringify(record, null, 2)}</div>
+                );
+
+                return (
+                    <Popover content={tc}>
+                        <div>{record.description}</div>
+                    </Popover>
+                );
+            }
         }, {
-            title: '描述',
-            dataIndex: 'description',
-            key: 'description'
-        }, {
-            title: '预分配端口',
-            dataIndex: 'port',
-            key: 'port'
+            title: '服务地址',
+            key: 'serviceURL',
+            render: (text, record) => (
+                <div className="ip-list-wrapper">
+                    {
+                        record.ipList.map((ip) => {
+                            return <a href="#">http://{ip}:{record.port}</a>;
+                        })
+                    }
+                </div>
+            )
         }, {
             title: '操作',
             key: 'action',

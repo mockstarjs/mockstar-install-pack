@@ -74,6 +74,9 @@ function getNewProjects(msStatus, projects) {
     return projects.map((item) => {
         // 如果列表中的根目录匹配了当前启动的，则设置下标记
         item.isRunning = (item.basePath === msStatus.options.rootPath);
+
+        item.ipList = (item.isRunning ? msStatus.ipList : []);
+
         return item;
     });
 }
