@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import {
     GLOBAL_SETTING_HIDE_DLG,
-    GLOBAL_SETTING_REQUEST_SUCCESS,
+    GLOBAL_SETTING_SHOW_DLG,
     GLOBAL_SETTING_SAVE_LOCAL_SUCCESS,
     MOCKSTAR_START_REQUEST,
     MOCKSTAR_START_REQUEST_FAIL,
@@ -87,7 +87,7 @@ export default function openProjectInfo(state = initialState, action) {
             };
             break;
 
-        case GLOBAL_SETTING_REQUEST_SUCCESS:
+        case GLOBAL_SETTING_SHOW_DLG:
             update = {
                 showGlobalSettingDlg: true,
                 errMsg: ''

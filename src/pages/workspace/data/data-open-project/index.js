@@ -8,7 +8,7 @@ export {
     loadRemoveOpenProject,
     loadStartProject,
     loadStopProject,
-    loadGlobalSetting,
+    showGlobalSettingDlg,
     hideGlobalSettingDlg,
     loadSaveGlobalSetting
 }from './action';

@@ -9,7 +9,7 @@ import GlobalSetting from './global-setting';
 import { loadLocalDBData, loadMockStarStatus } from '../../../../data/data-local-db';
 import { startCreateProject } from '../../data/data-create-project';
 import {
-    loadGlobalSetting,
+    showGlobalSettingDlg,
     loadOpenProject,
     loadRemoveOpenProject,
     loadStartProject,
@@ -90,7 +90,7 @@ class PageWorkspaceHome extends Component {
      * 设置全局参数
      */
     handleGoGlobalSetting = () => {
-        this.props.loadGlobalSetting();
+        this.props.showGlobalSettingDlg();
     };
 
     render() {
@@ -148,8 +148,8 @@ function mapDispatchToProps(dispatch) {
             return dispatch(loadOpenProject());
         },
 
-        loadGlobalSetting() {
-            return dispatch(loadGlobalSetting());
+        showGlobalSettingDlg() {
+            return dispatch(showGlobalSettingDlg());
         },
 
         loadRemoveOpenProject(id) {

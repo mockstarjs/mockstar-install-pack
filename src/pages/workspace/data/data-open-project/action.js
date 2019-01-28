@@ -7,11 +7,8 @@ export const OPEN_PROJECT_REQUEST = 'OPEN_PROJECT_REQUEST';
 export const OPEN_PROJECT_REQUEST_SUCCESS = 'OPEN_PROJECT_REQUEST_SUCCESS';
 export const OPEN_PROJECT_REQUEST_FAIL = 'OPEN_PROJECT_REQUEST_FAIL';
 
-export const GLOBAL_SETTING_REQUEST = 'GLOBAL_SETTING_REQUEST';
-export const GLOBAL_SETTING_REQUEST_SUCCESS = 'GLOBAL_SETTING_REQUEST_SUCCESS';
-export const GLOBAL_SETTING_REQUEST_FAIL = 'GLOBAL_SETTING_REQUEST_FAIL';
-
 export const OPEN_PROJECT_HIDE_DLG = 'OPEN_PROJECT_HIDE_DLG';
+export const GLOBAL_SETTING_SHOW_DLG = 'GLOBAL_SETTING_SHOW_DLG';
 export const GLOBAL_SETTING_HIDE_DLG = 'GLOBAL_SETTING_HIDE_DLG';
 
 export const OPEN_PROJECT_SAVE_LOCAL = 'OPEN_PROJECT_SAVE_LOCAL';
@@ -137,21 +134,9 @@ export function loadStopProject(id) {
     };
 }
 
-function fetchGlobalSetting() {
+export function showGlobalSettingDlg() {
     return {
-        [CALL_ELECTRON_REQUEST]: {
-            types: [GLOBAL_SETTING_REQUEST, GLOBAL_SETTING_REQUEST_SUCCESS, GLOBAL_SETTING_REQUEST_FAIL],
-            reqEvent: EVENT.GLOBAL_SETTING.REQ,
-            rspEvent: EVENT.GLOBAL_SETTING.RSP,
-            data: {},
-            _debug: require('../../../../business/mock/global-setting-result')()
-        }
-    };
-}
-
-export function loadGlobalSetting() {
-    return (dispatch) => {
-        return dispatch(fetchGlobalSetting());
+        type: GLOBAL_SETTING_SHOW_DLG
     };
 }
 
