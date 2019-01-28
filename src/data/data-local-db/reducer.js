@@ -16,7 +16,7 @@ const initialState = {
     errMsg: '',
 
     // 公共信息
-    info: {},
+    globalSetting: {},
 
     // 已有项目列表
     projects: [],
@@ -43,7 +43,7 @@ export default function localDBInfo(state = initialState, action) {
             update = {
                 isLoaded: true,
                 isLoading: false,
-                info: data.info,
+                globalSetting: data.globalSetting,
                 projects: getNewProjects(state.msStatus, data.projects)
             };
             break;

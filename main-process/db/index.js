@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const { saveData, getData } = require('./util');
 
 /**
@@ -27,6 +28,28 @@ function getProjectByPath(projectPath) {
     return projects.filter((item) => {
         return item.basePath === projectPath;
     })[0] || null;
+}
+
+/**
+ * 保存全局设置
+ *
+ * @param {Object} data
+ * @param {Function} [callback]
+ */
+function saveGlobalSetting(data = {}, callback) {
+    const cacheData = getData();
+    const globalSetting = cacheData.globalSetting || {};
+
+    // 保存全局设置
+    cacheData.globalSetting = _.merge(globalSetting, data);
+
+    // 保存
+    saveData(cacheData);
+
+    // 回调
+    if (typeof callback === 'function') {
+        callback(data);
+    }
 }
 
 /**
@@ -85,6 +108,7 @@ function removeProjectById(id) {
 module.exports = {
     getProjectById,
     getProjectByPath,
+    saveGlobalSetting,
     saveProject,
     saveData,
     getData,

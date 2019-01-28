@@ -24,13 +24,13 @@ const projects = [{
     basePath: '/Users/name4/mockstar-app'
 }];
 
-const info = {
+const globalSetting = {
     // 数据库文件的当前路径
     cwd: '/a/b/c',
     cmder: 'tnpm'
 };
 
 module.exports = {
-    info,
+    globalSetting,
     projects
 };

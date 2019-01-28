@@ -38,7 +38,7 @@ class GlobalSetting extends Component {
     };
 
     render() {
-        const { info, showDlg, errMsg } = this.props;
+        const { globalSetting, showDlg, errMsg } = this.props;
 
         return (
             <div className="page-workspace-home-global-setting">
@@ -46,7 +46,7 @@ class GlobalSetting extends Component {
 
                 <OpenForm
                     ref={this.openFormRef}
-                    info={info}
+                    globalSetting={globalSetting}
                     showDlg={showDlg}
                     onCancel={this.handleCancel}
                     onOk={this.handleOk}
@@ -63,7 +63,7 @@ function mapStateToProps(state) {
     return {
         showDlg: openProjectInfo.showGlobalSettingDlg,
         errMsg: openProjectInfo.errMsg,
-        info: localDBInfo.info
+        globalSetting: localDBInfo.globalSetting || {}
     };
 }
 

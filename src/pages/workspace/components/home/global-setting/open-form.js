@@ -15,7 +15,7 @@ export const formItemLayout = {
 
 class OpenForm extends Component {
     render() {
-        const { form, info, showDlg, onOk, onCancel } = this.props;
+        const { form, globalSetting, showDlg, onOk, onCancel } = this.props;
         const { getFieldDecorator } = form;
 
         return (
@@ -31,7 +31,7 @@ class OpenForm extends Component {
                         label="请选择npm"
                     >
                         {getFieldDecorator('cmder', {
-                            initialValue: info.cmder,
+                            initialValue: globalSetting.cmder,
                             rules: [
                                 {
                                     required: true
