@@ -80,8 +80,13 @@ class HomeProjectList extends Component {
             render: (text, record) => (
                 <div className="ip-list-wrapper">
                     {
-                        record.ipList.map((ip) => {
-                            return <a href="#">http://{ip}:{record.port}</a>;
+                        record.ipList.map((ip, ipIndex) => {
+                            return (
+                                <a key={ipIndex} href="javascript:;"
+                                   onClick={this.handleGoProjectPage.bind(this, record)}>
+                                    http://{ip}:{record.port}
+                                </a>
+                            );
                         })
                     }
                 </div>
