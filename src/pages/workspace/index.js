@@ -6,7 +6,7 @@ import Home from './components/home';
 import CreateProject from './components/create-project';
 import Project from './components/project';
 
-import { loadLocalDBData } from '../../data/data-local-db';
+import { loadLocalDBData, loadMockStarStatus } from '../../data/data-local-db';
 
 import './index.less';
 
@@ -14,6 +14,7 @@ class PageWorkspace extends Component {
     componentDidMount() {
         // 获取存储在本地数据库中的项目信息
         this.props.loadLocalDBData();
+        this.props.loadMockStarStatus();
     }
 
     render() {
@@ -41,6 +42,10 @@ function mapDispatchToProps(dispatch) {
     return {
         loadLocalDBData() {
             return dispatch(loadLocalDBData());
+        },
+
+        loadMockStarStatus() {
+            return dispatch(loadMockStarStatus());
         }
     };
 }

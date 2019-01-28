@@ -32,14 +32,19 @@ class PageWorkspaceProjectHeader extends Component {
     };
 
     render() {
-        const { currentProjectInfo } = this.props;
+        const { currentProjectInfo, isRunning } = this.props;
 
         const content = (
             <div className="header-content-wrapper">
                 <p>{currentProjectInfo.description}</p>
                 <div className="action-wrapper">
-                    <Button type="primary" icon="check-circle" onClick={this.handleStart}>启动</Button>
-                    <Button type="primary" icon="stop" onClick={this.handleStop}>关闭</Button>
+                    {
+                        isRunning ? (
+                            <Button type="primary" icon="stop" onClick={this.handleStop}>关闭</Button>
+                        ) : (
+                            <Button type="primary" icon="check-circle" onClick={this.handleStart}>启动</Button>
+                        )
+                    }
                     <Button type="primary" icon="plus" onClick={this.handleCreateMocker}>新增桩对象</Button>
                     <Button icon="setting" onClick={this.handleConfig}>配置</Button>
                 </div>
@@ -58,10 +63,11 @@ class PageWorkspaceProjectHeader extends Component {
 }
 
 function mapStateToProps(state) {
-    const { currentProjectInfo } = state;
+    const { currentProjectInfo, localDBInfo } = state;
 
     return {
-        currentProjectInfo: currentProjectInfo
+        currentProjectInfo: currentProjectInfo,
+        isRunning: currentProjectInfo.basePath === localDBInfo.msStatus.options.rootPath
     };
 }
 

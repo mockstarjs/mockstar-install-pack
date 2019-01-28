@@ -24,20 +24,29 @@ class PageWorkspaceProjectDashboad extends Component {
     };
 
     render() {
+        const { isRunning } = this.props;
+
         return (
             <div className="page-workspace-project-dashboard">
-                <Header goCreateMocker={this.handleGoCreateMocker} />
-                <IframeContainer />
+                <Header goCreateMocker={this.handleGoCreateMocker}/>
+
+                {
+                    isRunning ? (
+                        <IframeContainer />
+                    ) : null
+                }
+
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { currentProjectInfo } = state;
+    const { currentProjectInfo, localDBInfo } = state;
 
     return {
-        currentProjectInfo: currentProjectInfo
+        currentProjectInfo: currentProjectInfo,
+        isRunning: currentProjectInfo.basePath === localDBInfo.msStatus.options.rootPath
     };
 }
 

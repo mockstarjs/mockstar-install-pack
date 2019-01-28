@@ -83,7 +83,7 @@ class HomeProjectList extends Component {
                         {record.isRunning ? '关闭' : '启动'}服务
                     </Button>
                     <Divider type="vertical" />
-                    <Button onClick={this.handleGoProjectPage.bind(this, record)}>编辑</Button>
+                    <Button onClick={this.handleGoProjectPage.bind(this, record)}>进入使用</Button>
                     <Divider type="vertical" />
                     <Button type="danger" onClick={this.handleRemoveProject.bind(this, record)}>移除</Button>
                 </span>

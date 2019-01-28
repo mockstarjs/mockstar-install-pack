@@ -85,7 +85,6 @@ class PageWorkspaceHome extends Component {
     };
 
     render() {
-        const { msStatus } = this.props;
         return (
             <div className="page-workspace-home">
                 <Header
@@ -93,9 +92,9 @@ class PageWorkspaceHome extends Component {
                     goCreateProject={this.handleGoCreateProject}
                 />
 
-                <OpenProject goProject={this.handleGoProject} />
-
-                {JSON.stringify(msStatus)}
+                <OpenProject
+                    goProject={this.handleGoProject}
+                />
 
 
                 <ProjectList
