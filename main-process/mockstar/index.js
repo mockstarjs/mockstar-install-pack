@@ -35,8 +35,8 @@ function start(projectPath, callback) {
                     return;
                 }
 
-                // 如果已经运行中，也返回
-                if (isPidRunning) {
+                // 如果已经运行中，且要限制确实是同一个项目
+                if (isPidRunning && (config.options.rootPath === projectPath)) {
                     clearTimeout(checkT);
                     count = 0;
                     callback && callback(code, config);
