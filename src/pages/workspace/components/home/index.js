@@ -11,6 +11,7 @@ import {
     loadOpenProject,
     loadRemoveOpenProject,
     loadStartProject,
+    loadStopProject,
     startOpenProject
 } from '../../data/data-open-project';
 
@@ -62,10 +63,17 @@ class PageWorkspaceHome extends Component {
     };
 
     /**
-     * 启动项目
+     * 启动项目的 MockStar 服务
      */
     handleStartProject = (id) => {
         this.props.loadStartProject(id);
+    };
+
+    /**
+     * 关闭项目的 MockStar 服务
+     */
+    handleStopProject = (id) => {
+        this.props.loadStopProject(id);
     };
 
     render() {
@@ -86,6 +94,7 @@ class PageWorkspaceHome extends Component {
                     goProject={this.handleGoProject}
                     removeProject={this.handleRemoveProject}
                     startProject={this.handleStartProject}
+                    stopProject={this.handleStopProject}
                 />
 
             </div>
@@ -126,6 +135,10 @@ function mapDispatchToProps(dispatch) {
 
         loadStartProject(id) {
             return dispatch(loadStartProject(id));
+        },
+
+        loadStopProject(id) {
+            return dispatch(loadStopProject(id));
         },
 
         loadMockStarStatus() {

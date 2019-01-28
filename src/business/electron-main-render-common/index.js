@@ -39,6 +39,10 @@ const EVENT = {
         REQ: 'req-mockstar-start',
         RSP: 'rsp-mockstar-start'
     },
+    MOCKSTAR_STOP: {
+        REQ: 'req-mockstar-stop',
+        RSP: 'rsp-mockstar-stop'
+    },
     MOCKSTAR_STATUS: {
         REQ: 'req-mockstar-status',
         RSP: 'rsp-mockstar-status'

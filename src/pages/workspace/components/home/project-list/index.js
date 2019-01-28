@@ -18,8 +18,12 @@ class HomeProjectList extends Component {
         this.props.goProject(item.id);
     };
 
-    handleStartProject = (item) => {
-        this.props.startProject(item.id);
+    handleStartOrStopProject = (item) => {
+        if (item.isRunning) {
+            this.props.stopProject(item.id);
+        } else {
+            this.props.startProject(item.id);
+        }
     };
 
     handleRemoveProject = (item) => {
@@ -75,7 +79,7 @@ class HomeProjectList extends Component {
                 <span>
                     <Button
                         type={record.isRunning ? 'danger' : 'primary'}
-                        onClick={this.handleStartProject.bind(this, record)}>
+                        onClick={this.handleStartOrStopProject.bind(this, record)}>
                         {record.isRunning ? '关闭' : '启动'}服务
                     </Button>
                     <Divider type="vertical" />

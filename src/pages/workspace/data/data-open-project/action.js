@@ -21,6 +21,10 @@ export const MOCKSTAR_START_REQUEST = 'MOCKSTAR_START_REQUEST';
 export const MOCKSTAR_START_REQUEST_SUCCESS = 'MOCKSTAR_START_REQUEST_SUCCESS';
 export const MOCKSTAR_START_REQUEST_FAIL = 'MOCKSTAR_START_REQUEST_FAIL';
 
+export const MOCKSTAR_STOP_REQUEST = 'MOCKSTAR_STOP_REQUEST';
+export const MOCKSTAR_STOP_REQUEST_SUCCESS = 'MOCKSTAR_STOP_REQUEST_SUCCESS';
+export const MOCKSTAR_STOP_REQUEST_FAIL = 'MOCKSTAR_STOP_REQUEST_FAIL';
+
 export function startOpenProject() {
     return {
         type: OPEN_PROJECT_START
@@ -103,5 +107,23 @@ function fetchStartProject(id) {
 export function loadStartProject(id) {
     return (dispatch) => {
         return dispatch(fetchStartProject(id));
+    };
+}
+
+function fetchStopProject(id) {
+    return {
+        [CALL_ELECTRON_REQUEST]: {
+            types: [MOCKSTAR_STOP_REQUEST, MOCKSTAR_STOP_REQUEST_SUCCESS, MOCKSTAR_STOP_REQUEST_FAIL],
+            reqEvent: EVENT.MOCKSTAR_STOP.REQ,
+            rspEvent: EVENT.MOCKSTAR_STOP.RSP,
+            data: { id },
+            _debug: require('../../../../business/mock/mockstart-stop-result')()
+        }
+    };
+}
+
+export function loadStopProject(id) {
+    return (dispatch) => {
+        return dispatch(fetchStopProject(id));
     };
 }
