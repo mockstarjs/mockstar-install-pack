@@ -73,12 +73,7 @@ export default function localDBInfo(state = initialState, action) {
 function getNewProjects(msStatus, projects) {
     return projects.map((item) => {
         // 如果列表中的根目录匹配了当前启动的，则设置下标记
-        if (item.basePath === msStatus.options.rootPath) {
-            item.isRunning = true;
-        } else {
-            item.isRunning = false;
-        }
-
+        item.isRunning = (item.basePath === msStatus.options.rootPath);
         return item;
     });
 }

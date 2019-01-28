@@ -104,11 +104,11 @@ class HomeProjectList extends Component {
 }
 
 function mapStateToProps(state) {
-    const { localDBInfo } = state;
+    const { localDBInfo, openProjectInfo } = state;
 
     return {
         isLoaded: localDBInfo.isLoaded,
-        isLoading: localDBInfo.isLoading,
+        isLoading: localDBInfo.isLoading || openProjectInfo.isCmdRunning,
         projects: localDBInfo.projects
     };
 }
