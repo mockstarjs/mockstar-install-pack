@@ -1,6 +1,9 @@
 import _ from 'lodash';
 
 import {
+    GLOBAL_SETTING_HIDE_DLG,
+    GLOBAL_SETTING_REQUEST_SUCCESS,
+    GLOBAL_SETTING_SAVE_LOCAL_SUCCESS,
     MOCKSTAR_START_REQUEST,
     MOCKSTAR_START_REQUEST_FAIL,
     MOCKSTAR_START_REQUEST_SUCCESS,
@@ -19,6 +22,8 @@ const initialState = {
     selectedDirectory: '',
 
     showDlg: false,
+
+    showGlobalSettingDlg: false,
 
     // cmd 命令 mockstar start 或 stop 进行中
     isCmdRunning: false,
@@ -61,9 +66,30 @@ export default function openProjectInfo(state = initialState, action) {
             };
             break;
 
+        case GLOBAL_SETTING_HIDE_DLG:
+            update = {
+                showGlobalSettingDlg: false,
+                errMsg: ''
+            };
+            break;
+
         case OPEN_PROJECT_SAVE_LOCAL_SUCCESS:
             update = {
                 showDlg: false,
+                errMsg: ''
+            };
+            break;
+
+        case GLOBAL_SETTING_SAVE_LOCAL_SUCCESS:
+            update = {
+                showGlobalSettingDlg: false,
+                errMsg: ''
+            };
+            break;
+
+        case GLOBAL_SETTING_REQUEST_SUCCESS:
+            update = {
+                showGlobalSettingDlg: true,
                 errMsg: ''
             };
             break;

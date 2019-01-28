@@ -31,6 +31,10 @@ const EVENT = {
         REQ: 'req-save-open-project',
         RSP: 'rsp-save-open-project'
     },
+    SAVE_GLOBAL_SETTING: {
+        REQ: 'req-save-global-setting',
+        RSP: 'rsp-save-global-setting'
+    },
     REMOVE_OPEN_PROJECT: {
         REQ: 'req-remove-open-project',
         RSP: 'rsp-remove-open-project'
@@ -38,6 +42,10 @@ const EVENT = {
     OPEN_PROJECT: {
         REQ: 'req-open-project',
         RSP: 'rsp-open-project'
+    },
+    GLOBAL_SETTING: {
+        REQ: 'req-global-setting',
+        RSP: 'rsp-global-setting'
     },
     MOCKSTAR_START: {
         REQ: 'req-mockstar-start',

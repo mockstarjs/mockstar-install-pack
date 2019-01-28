@@ -7,7 +7,10 @@ export {
     loadSaveOpenProject,
     loadRemoveOpenProject,
     loadStartProject,
-    loadStopProject
+    loadStopProject,
+    loadGlobalSetting,
+    hideGlobalSettingDlg,
+    loadSaveGlobalSetting
 }from './action';
 
 export const openProjectInfo = reducer;

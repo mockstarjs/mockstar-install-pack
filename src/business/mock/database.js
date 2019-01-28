@@ -26,7 +26,8 @@ const projects = [{
 
 const info = {
     // 数据库文件的当前路径
-    cwd: '/a/b/c'
+    cwd: '/a/b/c',
+    cmder: 'tnpm'
 };
 
 module.exports = {

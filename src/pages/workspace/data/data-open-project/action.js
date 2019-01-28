@@ -7,11 +7,20 @@ export const OPEN_PROJECT_REQUEST = 'OPEN_PROJECT_REQUEST';
 export const OPEN_PROJECT_REQUEST_SUCCESS = 'OPEN_PROJECT_REQUEST_SUCCESS';
 export const OPEN_PROJECT_REQUEST_FAIL = 'OPEN_PROJECT_REQUEST_FAIL';
 
+export const GLOBAL_SETTING_REQUEST = 'GLOBAL_SETTING_REQUEST';
+export const GLOBAL_SETTING_REQUEST_SUCCESS = 'GLOBAL_SETTING_REQUEST_SUCCESS';
+export const GLOBAL_SETTING_REQUEST_FAIL = 'GLOBAL_SETTING_REQUEST_FAIL';
+
 export const OPEN_PROJECT_HIDE_DLG = 'OPEN_PROJECT_HIDE_DLG';
+export const GLOBAL_SETTING_HIDE_DLG = 'GLOBAL_SETTING_HIDE_DLG';
 
 export const OPEN_PROJECT_SAVE_LOCAL = 'OPEN_PROJECT_SAVE_LOCAL';
 export const OPEN_PROJECT_SAVE_LOCAL_SUCCESS = 'OPEN_PROJECT_SAVE_LOCAL_SUCCESS';
 export const OPEN_PROJECT_SAVE_LOCAL_FAIL = 'OPEN_PROJECT_SAVE_LOCAL_FAIL';
+
+export const GLOBAL_SETTING_SAVE_LOCAL = 'GLOBAL_SETTING_SAVE_LOCAL';
+export const GLOBAL_SETTING_SAVE_LOCAL_SUCCESS = 'GLOBAL_SETTING_SAVE_LOCAL_SUCCESS';
+export const GLOBAL_SETTING_SAVE_LOCAL_FAIL = 'GLOBAL_SETTING_SAVE_LOCAL_FAIL';
 
 export const OPEN_PROJECT_REMOVE_LOCAL = 'OPEN_PROJECT_REMOVE_LOCAL';
 export const OPEN_PROJECT_REMOVE_LOCAL_SUCCESS = 'OPEN_PROJECT_REMOVE_LOCAL_SUCCESS';
@@ -125,5 +134,47 @@ function fetchStopProject(id) {
 export function loadStopProject(id) {
     return (dispatch) => {
         return dispatch(fetchStopProject(id));
+    };
+}
+
+function fetchGlobalSetting() {
+    return {
+        [CALL_ELECTRON_REQUEST]: {
+            types: [GLOBAL_SETTING_REQUEST, GLOBAL_SETTING_REQUEST_SUCCESS, GLOBAL_SETTING_REQUEST_FAIL],
+            reqEvent: EVENT.GLOBAL_SETTING.REQ,
+            rspEvent: EVENT.GLOBAL_SETTING.RSP,
+            data: {},
+            _debug: require('../../../../business/mock/global-setting-result')()
+        }
+    };
+}
+
+export function loadGlobalSetting() {
+    return (dispatch) => {
+        return dispatch(fetchGlobalSetting());
+    };
+}
+
+export function hideGlobalSettingDlg() {
+    return {
+        type: GLOBAL_SETTING_HIDE_DLG
+    };
+}
+
+function fetchSaveGlobalSetting(data) {
+    return {
+        [CALL_ELECTRON_REQUEST]: {
+            types: [GLOBAL_SETTING_SAVE_LOCAL, GLOBAL_SETTING_SAVE_LOCAL_SUCCESS, GLOBAL_SETTING_SAVE_LOCAL_FAIL],
+            reqEvent: EVENT.SAVE_GLOBAL_SETTING.REQ,
+            rspEvent: EVENT.SAVE_GLOBAL_SETTING.RSP,
+            data: data,
+            _debug: require('../../../../business/mock/save-global-setting-result')()
+        }
+    };
+}
+
+export function loadSaveGlobalSetting(data) {
+    return (dispatch) => {
+        return dispatch(fetchSaveGlobalSetting(data));
     };
 }

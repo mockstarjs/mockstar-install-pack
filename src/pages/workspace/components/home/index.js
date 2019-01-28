@@ -4,10 +4,12 @@ import { connect } from 'react-redux';
 import Header from './header';
 import ProjectList from './project-list';
 import OpenProject from './open-project';
+import GlobalSetting from './global-setting';
 
 import { loadLocalDBData, loadMockStarStatus } from '../../../../data/data-local-db';
 import { startCreateProject } from '../../data/data-create-project';
 import {
+    loadGlobalSetting,
     loadOpenProject,
     loadRemoveOpenProject,
     loadStartProject,
@@ -84,17 +86,27 @@ class PageWorkspaceHome extends Component {
             });
     };
 
+    /**
+     * 设置全局参数
+     */
+    handleGoGlobalSetting = () => {
+        this.props.loadGlobalSetting();
+    };
+
     render() {
         return (
             <div className="page-workspace-home">
                 <Header
                     goOpenProject={this.handleGoOpenProject}
+                    goGlobalSetting={this.handleGoGlobalSetting}
                     goCreateProject={this.handleGoCreateProject}
                 />
 
                 <OpenProject
                     goProject={this.handleGoProject}
                 />
+
+                <GlobalSetting />
 
 
                 <ProjectList
@@ -134,6 +146,10 @@ function mapDispatchToProps(dispatch) {
 
         loadOpenProject() {
             return dispatch(loadOpenProject());
+        },
+
+        loadGlobalSetting() {
+            return dispatch(loadGlobalSetting());
         },
 
         loadRemoveOpenProject(id) {

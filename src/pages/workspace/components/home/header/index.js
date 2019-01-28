@@ -23,6 +23,10 @@ class PageWorkspaceHomeHeader extends Component {
         this.props.goCreateProject();
     };
 
+    handleGlobalSetting = () => {
+        this.props.goGlobalSetting();
+    };
+
     handleGoHelp = () => {
         message.info('使用文档');
     };
@@ -34,6 +38,7 @@ class PageWorkspaceHomeHeader extends Component {
                 <div className="action-wrapper">
                     <Button type="primary" icon="folder-open" onClick={this.handleOpenProject}>打开项目</Button>
                     <Button type="primary" icon="plus" onClick={this.handleCreateProject}>创建项目</Button>
+                    <Button icon="setting" onClick={this.handleGlobalSetting}>全局设置</Button>
                     <Button icon="question-circle" onClick={this.handleGoHelp}>使用文档</Button>
                 </div>
             </div>
