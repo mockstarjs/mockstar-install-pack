@@ -69,6 +69,7 @@ class PageWorkspaceHome extends Component {
     };
 
     render() {
+        const { msStatus } = this.props;
         return (
             <div className="page-workspace-home">
                 <Header
@@ -77,6 +78,8 @@ class PageWorkspaceHome extends Component {
                 />
 
                 <OpenProject goProject={this.handleGoProject} />
+
+                {JSON.stringify(msStatus)}
 
 
                 <ProjectList
@@ -91,10 +94,11 @@ class PageWorkspaceHome extends Component {
 }
 
 function mapStateToProps(state) {
-    const { projectInfo } = state;
+    const { projectInfo, localDBInfo } = state;
 
     return {
-        isLoaded: projectInfo.isLoaded
+        isLoaded: projectInfo.isLoaded,
+        msStatus: localDBInfo.msStatus
     };
 }
 

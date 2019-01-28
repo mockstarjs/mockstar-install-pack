@@ -21,10 +21,10 @@ const initialState = {
     // 已有项目列表
     projects: [],
 
-    mockStarStatus: {}
+    msStatus: {}
 };
 
-function mockerInfo(state = initialState, action) {
+export default function localDBInfo(state = initialState, action) {
     const { type, data } = action;
     let update = {};
 
@@ -53,7 +53,7 @@ function mockerInfo(state = initialState, action) {
             break;
 
         case MOCKSTAR_STATUS_REQUEST_SUCCESS:
-            update.mockStarStatus = data;
+            update.msStatus = data;
             break;
 
         default:
@@ -62,6 +62,3 @@ function mockerInfo(state = initialState, action) {
 
     return Object.keys(update).length ? Object.assign({}, state, update) : state;
 }
-
-export default mockerInfo;
-
