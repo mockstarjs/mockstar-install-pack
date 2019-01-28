@@ -1,5 +1,5 @@
 import reducer from './reducer';
 
-export { loadLocalDBData } from './action';
+export { loadLocalDBData, loadMockStarStatus } from './action';
 
 export const localDBInfo = reducer;

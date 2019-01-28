@@ -1,4 +1,9 @@
-import { LOCAL_DB_REQUEST, LOCAL_DB_REQUEST_FAIL, LOCAL_DB_REQUEST_SUCCESS } from './action';
+import {
+    LOCAL_DB_REQUEST,
+    LOCAL_DB_REQUEST_FAIL,
+    LOCAL_DB_REQUEST_SUCCESS,
+    MOCKSTAR_STATUS_REQUEST_SUCCESS
+} from './action';
 
 const initialState = {
     // 是否已加载完成
@@ -14,7 +19,9 @@ const initialState = {
     info: {},
 
     // 已有项目列表
-    projects: []
+    projects: [],
+
+    mockStarStatus: {}
 };
 
 function mockerInfo(state = initialState, action) {
@@ -43,6 +50,10 @@ function mockerInfo(state = initialState, action) {
                 isLoaded: true,
                 isLoading: false
             };
+            break;
+
+        case MOCKSTAR_STATUS_REQUEST_SUCCESS:
+            update.mockStarStatus = data;
             break;
 
         default:

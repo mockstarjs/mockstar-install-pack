@@ -5,7 +5,7 @@ import Header from './header';
 import ProjectList from './project-list';
 import OpenProject from './open-project';
 
-import { loadLocalDBData } from '../../../../data/data-local-db';
+import { loadLocalDBData, loadMockStarStatus } from '../../../../data/data-local-db';
 import { startCreateProject } from '../../data/data-create-project';
 import {
     loadOpenProject,
@@ -19,6 +19,7 @@ import './index.less';
 class PageWorkspaceHome extends Component {
     componentDidMount() {
         // console.log('---2--', this.props.match, this.props.history);
+        this.props.loadMockStarStatus();
     }
 
     /**
@@ -121,6 +122,10 @@ function mapDispatchToProps(dispatch) {
 
         loadStartProject(id) {
             return dispatch(loadStartProject(id));
+        },
+
+        loadMockStarStatus() {
+            return dispatch(loadMockStarStatus());
         }
     };
 }
