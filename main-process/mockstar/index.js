@@ -17,7 +17,43 @@ function start(projectPath, callback) {
     // 启动服务
     const command = spawn('npm', ['start']);
 
-    _dealCmdCallback(command, callback);
+    _dealCmdCallback(command, (code, data) => {
+        if (code !== 0) {
+            callback && callback(code, data);
+            return;
+        }
+
+        let checkT;
+        let count = 0;
+        const check = function () {
+            starting.getStatus(function (isPidRunning, config) {
+                // 超时返回
+                if (count > 10) {
+                    clearTimeout(checkT);
+                    count = 0;
+                    callback && callback(-999, data);
+                    return;
+                }
+
+                // 如果已经运行中，也返回
+                if (isPidRunning) {
+                    clearTimeout(checkT);
+                    count = 0;
+                    callback && callback(code, config);
+                    return;
+                }
+
+                // 否则轮询检查
+                count++;
+
+                checkT = setTimeout(() => {
+                    check();
+                }, 600);
+            });
+        };
+
+        check();
+    });
 }
 
 /**

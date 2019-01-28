@@ -66,14 +66,22 @@ class PageWorkspaceHome extends Component {
      * 启动项目的 MockStar 服务
      */
     handleStartProject = (id) => {
-        this.props.loadStartProject(id);
+        this.props.loadStartProject(id)
+            .then((data) => {
+                // console.log('====data=====', data);
+                this.props.loadMockStarStatus();
+            });
     };
 
     /**
      * 关闭项目的 MockStar 服务
      */
     handleStopProject = (id) => {
-        this.props.loadStopProject(id);
+        this.props.loadStopProject(id)
+            .then((data) => {
+                // console.log('====data=====', data);
+                this.props.loadMockStarStatus();
+            });
     };
 
     render() {
