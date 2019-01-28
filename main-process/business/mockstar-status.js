@@ -14,7 +14,7 @@ ipcMain.on(EVENT.MOCKSTAR_STATUS.REQ, (event, opts) => {
     mockstar.getStatus(function (isPidRunning, config) {
         event.sender.send(EVENT.MOCKSTAR_STATUS.RSP, {
             retcode: 0,
-            result: isPidRunning ? config : {}
+            result: isPidRunning ? config : { options: {} }
         }, opts);
     });
 

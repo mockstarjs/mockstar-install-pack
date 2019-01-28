@@ -1,19 +1,19 @@
 module.exports = () => {
     return {
         "options": {
-            "adminCGIRouteName": "mockstar-cgi",
-            "adminSiteRouteName": "mockstar-admin",
-            "buildPath": "/Users/helinjiang/gitprojects-fis/mockstar/packages/mockstar-cli/test/data/local-server-test/build",
-            "isDev": true,
-            "logPath": "/Users/helinjiang/gitprojects-fis/mockstar/packages/mockstar-cli/test/data/local-server-test/build/logs",
-            "mockServerPath": "/Users/helinjiang/gitprojects-fis/mockstar/packages/mockstar/test/data/fixtures/mock_server/mockers",
-            "name": "mockstar_9527",
-            "namespace": "",
+            "rootPath": "/Users/helinjiang/gitprojects/now-h5-shake-redpacket/mockstar-app",
+            "buildPath": "/Users/helinjiang/gitprojects/now-h5-shake-redpacket/mockstar-app/build",
+            "logPath": "/Users/helinjiang/gitprojects/now-h5-shake-redpacket/mockstar-app/build/logs",
+            "mockServerPath": "/Users/helinjiang/gitprojects/now-h5-shake-redpacket/mockstar-app/mock_server/mockers",
             "port": 9527,
-            "rootPath": "/Users/helinjiang/gitprojects-fis/mockstar/packages/mockstar-cli/test/data/local-server-test",
+            "name": "mockstar_9527",
+            "isDev": true,
+            "watch": true,
+            "namespace": "",
             "staticBasePath": "/",
-            "watch": true
+            "adminSiteRouteName": "mockstar-admin",
+            "adminCGIRouteName": "mockstar-cgi"
         },
-        "pid": 18264
+        "pid": 20494
     };
 };

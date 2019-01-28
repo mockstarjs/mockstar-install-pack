@@ -73,7 +73,11 @@ class HomeProjectList extends Component {
             key: 'action',
             render: (text, record) => (
                 <span>
-                    <Button onClick={this.handleStartProject.bind(this, record)}> 关闭/启动</Button>
+                    <Button
+                        type={record.isRunning ? 'danger' : 'primary'}
+                        onClick={this.handleStartProject.bind(this, record)}>
+                        {record.isRunning ? '关闭' : '启动'}服务
+                    </Button>
                     <Divider type="vertical" />
                     <Button onClick={this.handleGoProjectPage.bind(this, record)}>编辑</Button>
                     <Divider type="vertical" />

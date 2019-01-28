@@ -21,7 +21,9 @@ const initialState = {
     // 已有项目列表
     projects: [],
 
-    msStatus: {}
+    msStatus: {
+        options: {}
+    }
 };
 
 export default function localDBInfo(state = initialState, action) {
@@ -41,7 +43,8 @@ export default function localDBInfo(state = initialState, action) {
             update = {
                 isLoaded: true,
                 isLoading: false,
-                ...data
+                info: data.info,
+                projects: getNewProjects(state.msStatus, data.projects)
             };
             break;
 
@@ -53,7 +56,11 @@ export default function localDBInfo(state = initialState, action) {
             break;
 
         case MOCKSTAR_STATUS_REQUEST_SUCCESS:
-            update.msStatus = data;
+            update = {
+                msStatus: data,
+                projects: getNewProjects(data, state.projects)
+            };
+
             break;
 
         default:
@@ -61,4 +68,17 @@ export default function localDBInfo(state = initialState, action) {
     }
 
     return Object.keys(update).length ? Object.assign({}, state, update) : state;
+}
+
+function getNewProjects(msStatus, projects) {
+    return projects.map((item) => {
+        // 如果列表中的根目录匹配了当前启动的，则设置下标记
+        if (item.basePath === msStatus.options.rootPath) {
+            item.isRunning = true;
+        } else {
+            item.isRunning = false;
+        }
+
+        return item;
+    });
 }
