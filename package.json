@@ -10,7 +10,8 @@
     "electron-start": "electron .",
     "electron-start-dev": "electron . --debug",
     "electron-start-dev-proxy": "electron . --debug --proxy-server=127.0.0.1:8080",
-    "electron-start-dev2": "./node_modules/electron/cli.js -v"
+    "electron-start-dev2": "./node_modules/electron/cli.js -v",
+    "pack": "electron-packager . myClient --mac --out /Users/helinjiang/Documents --arch=x64 --app-version=0.0.1 --electron-version=3.0.9 --overwrite"
   },
   "repository": {
     "type": "git",
